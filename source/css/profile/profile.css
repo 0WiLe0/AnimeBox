@@ -134,8 +134,9 @@ main{
     position: relative;
 }
 .bg{
+    background-position: center;
     border-radius: 5px;
-    width: 1757px;
+    width: 1724px;
     height: 255px;
 }
 .avatar{
@@ -182,4 +183,395 @@ main{
     border-radius: 50%;
     background: #A8EFA8;
     margin-left: 5px;
+}
+
+
+.main_block{
+
+}
+
+.stat_block_container{
+    width: 1290px;
+}
+
+.stat_block{
+    width: 1724px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inf_block{
+    margin-top: 17px;
+    margin-left: 286px;
+    display: flex;
+    flex-direction: column;
+}
+.inf_panel{
+    display: flex;
+}
+.roles{
+    margin-bottom: 8px;
+}
+.role{
+    padding: 4px 13px;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    border-radius: 5px;
+    border: 2px solid #212121;
+}
+
+.panel_profile{
+    border-right: 1px solid #212121;
+}
+.panel_profile:nth-of-type(1){
+    padding-right: 33px;
+}
+.panel_profile_stats{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 24px;
+    padding-right: 24px;
+}
+
+.creat_ac{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+.telegram {
+    display: flex;
+    align-items: center;
+}
+.telegram a{
+    margin-left: 3px;
+    text-decoration: none;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+.panel_profile_amount{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+.panel_profile_title{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+
+.about_me_title{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #242424;
+}
+
+.about_me_text{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+
+.swape_profile{
+    display: flex;
+    justify-content: space-between;
+}
+.swape_profile_button{
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #212121;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 418px;
+    height: 49px;
+    transition: .3s;
+}
+
+.swape_profile_button:hover{
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #212121;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 418px;
+    height: 49px;
+    transition: .3s;
+}
+
+.group_title_flex{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.group_title{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #242424;
+    margin-bottom: 5px;
+}
+
+.anime_blcoks{
+    display: flex;
+    justify-content: space-between;
+}
+
+.amime_block{
+    width: 187px;
+}
+.anime{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+.anime_rating{
+    margin: 4px 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+    width: 58px;
+    height: 26px;
+    background: #212121;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 19px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #fff;
+}
+.amount_series{
+    margin: 4px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 89px;
+    height: 26px;
+    background: #212121;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #fff;
+}
+.anime_title{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #212121;
+    margin-top: 3px;
+}
+
+.open_history_list{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #212121;
+    border-radius: 8px;
+    width: 187px;
+    height: 280px;
+    background: #fff;
+    transition: .3s;
+}
+.open_history_list span:nth-of-type(1){
+    display: block;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 10px;
+    text-align: center;
+    color: #212121;
+    transition: .3s;
+}
+.open_history_list span:nth-of-type(2){
+    display: block;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 25px;
+    text-transform: uppercase;
+    line-height: 38px;
+    text-align: center;
+    color: #212121;
+    transition: .3s;
+}
+.open_history_list span:nth-of-type(3){
+    display: block;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 19px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 3px;
+    color: #212121;
+    padding-bottom: 11px;
+    transition: .3s;
+}
+.open_history_list:hover{
+    background: linear-gradient(180deg, #fff 0%, #575757 39.9%, #212121 100%);
+    transition: .3s;
+}
+.open_history_list:hover span{
+    color: #fff;
+    transition: .3s;
+}
+.open_history_list:hover svg path{
+    fill: #fff;
+    transition: .3s;
+}
+
+.level{
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 404px;
+    height: 240px;
+    background: #fff;
+    margin-top: 35px;
+}
+.amount_level{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.amount_lvl{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 109px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    line-height: 81px;
+}
+.lvl{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    line-height: 45px;
+}
+.lvl_profile{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    line-height: 2px;
+}
+.progress{
+    margin-top: 15px;
+    border: 1px solid #212121;
+    width: 252px;
+    height: 6px;
+}
+.progress_line{
+    display: flex;
+    width: 121px;
+    height: 6px;
+    background: #212121;
+}
+.bot_progress_bar{
+    display: flex;
+    justify-content: space-between;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+.resume_title{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #242424;
+}
+.resume_watch_block{
+    width: 404px;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    height: 329px;
+}
+
+.video_block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    width: 394px;
+    height: 263px;
+    background: #000;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+.title_anime_resume{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #212121;
+    margin-left: 5px;
+    margin-top: 7px;
+}
+.resume_series{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #212121;
+    margin-left: 5px;
+    margin-top: 9px;
 }
