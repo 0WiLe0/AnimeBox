@@ -1,0 +1,185 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
+input.middle:focus {
+    outline-width: 0;
+}
+
+/* Меню */
+
+aside{
+    position: fixed;
+}
+nav{
+    width: 120px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #212121;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 11px;
+    margin-top: 33px;
+}
+.profile, .player, .rating, .catalog, .settings, .reportbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 11px;
+}
+
+.hover_home{
+    display: none;
+    position: relative;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    z-index: 100000;
+
+}
+
+.menu_btn:hover .hover_home {
+    display: block;
+}
+
+.hover_home span{
+    width: 56px;
+    position: absolute;
+    z-index: 6;
+    top: -8px;
+    left: 37px;
+}
+.hover_home svg{
+    position: absolute;
+    z-index: 5;
+    top: -15px;
+    left: 14px;
+}
+
+.menu_btn .menu_btn_icon{
+    transition: .2s;
+}
+.menu_btn:hover{
+    background-color: #212121;
+    transition: .2s;
+}
+
+.menu_btn:hover .menu_btn_icon svg path{
+    fill: #fff;
+    transition: .2s;
+}
+
+
+.menu_btn {
+    position: relative;
+    z-index: 10;
+}
+
+.circles_report{
+    width: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    margin-bottom: 33px;
+}
+.circlre{
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: #212121;
+}
+
+
+/* Основа */
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin-left: 120px;
+    height: 100%;
+}
+
+
+.header{
+    margin-top: 33px;
+}
+.header_bg{
+    position: relative;
+}
+.bg{
+    border-radius: 5px;
+    width: 1757px;
+    height: 255px;
+}
+.avatar{
+    position: absolute;
+    top: 167px;
+    left: 94px;
+    border: 5px solid #fff;
+    border-radius: 131px;
+    width: 175px;
+    height: 168px;
+}
+.inf_profile{
+    position: absolute;
+    top: 205px;
+    left: 296px;
+    display: flex;
+    align-items: end;
+}
+.nickname{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 29px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #fff;
+    margin-right: 10px;
+}
+.status_block{
+    display: flex;
+
+}
+.status_name{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #fff;
+    margin-bottom: 5px;
+}
+.status_circle{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #A8EFA8;
+    margin-left: 5px;
+}

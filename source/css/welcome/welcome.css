@@ -1,0 +1,102 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+a{
+    text-decoration: none;
+}
+.version{
+    font-family: "Comfortaa", serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #212121;
+    position: fixed;
+    bottom: 13px;
+    right: 31px;
+}
+
+/* Главная приветствие */
+
+.welcome{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    margin-left: 53px;
+    margin-bottom: 30px;
+}
+
+.logo img{
+    -webkit-user-drag: none
+}
+
+.start{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Comfortaa", serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #f8f8f8;
+    border-radius: 10px;
+    width: 341px;
+    height: 65px;
+    background: #212121;
+    margin-bottom: 13px;
+    user-select: none;
+    border: #212121 solid 3px;
+    transition: .5s;
+}
+
+.start:hover{
+    color: #212121;
+    background-color: #f8f8f8;
+    border: #212121 solid 3px;
+    transition: .5s;
+}
+
+.label{
+    font-family: "Comfortaa", serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #000;
+}
+
+.main_circles{
+    position: absolute;
+    bottom: 10px;
+    width: 85px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+.circles{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    border: #212121 solid 3px;
+}
+
+.hero_one{
+    position: absolute;
+    bottom: -85px;
+    left: 54px;
+}
+
+.hero_two{
+    position: absolute;
+    bottom: -51px;
+    right: 157px;
+}

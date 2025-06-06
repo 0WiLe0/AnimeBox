@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeBox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://vjs.zencdn.net/8.3.0/video-js.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="source/css/player/player.css">
+</head>
+<body>
+
+    <aside>
+        <nav class="navigate">
+            <div class="menu">
+                <a href="" class="menu_btn home">
+                    <div class="menu_btn_icon">
+                        <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.72523 19.9996C1.25856 19.9996 0.900228 19.7996 0.650228 19.3996C0.400228 18.9996 0.375228 18.5746 0.575228 18.1246L7.60023 1.34961C7.85023 0.766276 8.25856 0.474609 8.82523 0.474609C9.42523 0.474609 9.83356 0.766276 10.0502 1.34961L17.1002 18.1746C17.2836 18.6413 17.2502 19.0663 17.0002 19.4496C16.7669 19.8163 16.4086 19.9996 15.9252 19.9996C15.6752 19.9996 15.4336 19.9329 15.2002 19.7996C14.9836 19.6496 14.8252 19.4496 14.7252 19.1996L8.52523 3.79961H9.22523L2.92523 19.1996C2.80856 19.4663 2.63356 19.6663 2.40023 19.7996C2.18356 19.9329 1.95856 19.9996 1.72523 19.9996ZM3.05023 15.6996L4.05023 13.5496H13.8502L14.8502 15.6996H3.05023Z" fill="white" />
+                        </svg>
+                    </div>
+                    <div class="hover_home">
+                        <span>главная</span>
+                        <svg width="98" height="30" viewBox="0 0 98 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00732 0C7.35047 0 6.00732 1.34315 6.00732 3V9.76758L0.757324 15.0176L6.00732 20.2676V27C6.00732 28.6569 7.35047 30 9.00732 30H95.0073C96.6642 30 98.0073 28.6569 98.0073 27V3C98.0073 1.34315 96.6642 0 95.0073 0H9.00732Z" fill="#212121" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="" class="menu_btn profile">
+                    <div class="menu_btn_icon">
+                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M11 5C11 6.65685 9.65685 8 8 8C6.34315 8 5 6.65685 5 5C5 3.34315 6.34315 2 8 2C9.65685 2 11 3.34315 11 5ZM10.3697 9.40389C11.9358 8.55943 13 6.904 13 5C13 2.23858 10.7614 0 8 0C5.23858 0 3 2.23858 3 5C3 6.904 4.06424 8.55943 5.6303 9.40389C4.40093 9.83285 3.27003 10.5933 2.34315 11.636C1.26927 12.8442 0.532221 14.3604 0.200003 16C0.0680867 16.6511 0 17.3216 0 18H2H8H14H16C16 17.3216 15.9319 16.6511 15.8 16C15.4678 14.3604 14.7307 12.8442 13.6569 11.636C12.73 10.5933 11.5991 9.83285 10.3697 9.40389ZM12.162 12.9648C12.905 13.8006 13.4526 14.8469 13.7488 16H8L2.25122 16C2.54738 14.8469 3.09496 13.8006 3.83796 12.9648C4.98632 11.6729 6.48981 11 8 11C9.51019 11 11.0137 11.6729 12.162 12.9648Z" fill="#212121" />
+                        </svg>
+                    </div>
+                    <div class="hover_home">
+                        <span>Профиль</span>
+                        <svg width="98" height="30" viewBox="0 0 98 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00732 0C7.35047 0 6.00732 1.34315 6.00732 3V9.76758L0.757324 15.0176L6.00732 20.2676V27C6.00732 28.6569 7.35047 30 9.00732 30H95.0073C96.6642 30 98.0073 28.6569 98.0073 27V3C98.0073 1.34315 96.6642 0 95.0073 0H9.00732Z" fill="#212121" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="" class="menu_btn player">
+                    <div class="menu_btn_icon">
+                        <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00594307 11.1238C0.00135017 11.7836 1.3223 12.0933 2.08089 11.6103L10.4104 6.30665C10.8763 6.01003 10.8662 5.5457 10.3879 5.26956L2.12849 0.500997C1.36419 0.0597242 0.0805528 0.40406 0.076046 1.05157L0.00594307 11.1238Z" fill="#212121" />
+                        </svg>
+                    </div>
+                    <div class="hover_home">
+                        <span>Плеер</span>
+                        <svg width="98" height="30" viewBox="0 0 98 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00732 0C7.35047 0 6.00732 1.34315 6.00732 3V9.76758L0.757324 15.0176L6.00732 20.2676V27C6.00732 28.6569 7.35047 30 9.00732 30H95.0073C96.6642 30 98.0073 28.6569 98.0073 27V3C98.0073 1.34315 96.6642 0 95.0073 0H9.00732Z" fill="#212121" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="" class="menu_btn rating">
+                    <div class="menu_btn_icon">
+                        <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5 1C5 0.447715 5.44772 0 6 0H8C8.55228 0 9 0.447715 9 1V11C9 11.5523 8.55228 12 8 12H6C5.44772 12 5 11.5523 5 11V1ZM0 5C0 4.44772 0.447715 4 1 4H3C3.55228 4 4 4.44772 4 5V11C4 11.5523 3.55228 12 3 12H1C0.447715 12 0 11.5523 0 11V5ZM11 7C10.4477 7 10 7.44772 10 8V11C10 11.5523 10.4477 12 11 12H13C13.5523 12 14 11.5523 14 11V8C14 7.44772 13.5523 7 13 7H11Z" fill="#212121" />
+                        </svg>
+                    </div>
+                    <div class="hover_home">
+                        <span>Рейтинг</span>
+                        <svg width="98" height="30" viewBox="0 0 98 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00732 0C7.35047 0 6.00732 1.34315 6.00732 3V9.76758L0.757324 15.0176L6.00732 20.2676V27C6.00732 28.6569 7.35047 30 9.00732 30H95.0073C96.6642 30 98.0073 28.6569 98.0073 27V3C98.0073 1.34315 96.6642 0 95.0073 0H9.00732Z" fill="#212121" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="" class="menu_btn catalog">
+                    <div class="menu_btn_icon">
+                        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0C0.447716 0 0 0.447708 0 1C0 1.55229 0.447716 2 1 2H11C11.5523 2 12 1.55229 12 1C12 0.447708 11.5523 0 11 0H1ZM1 4C0.447716 4 0 4.44772 0 5C0 5.55228 0.447716 6 1 6H11C11.5523 6 12 5.55228 12 5C12 4.44772 11.5523 4 11 4H1ZM0 9C0 8.44772 0.447716 8 1 8H11C11.5523 8 12 8.44772 12 9C12 9.55228 11.5523 10 11 10H1C0.447716 10 0 9.55228 0 9ZM14 2C14.5523 2 15 1.55229 15 1C15 0.447708 14.5523 0 14 0C13.4477 0 13 0.447708 13 1C13 1.55229 13.4477 2 14 2ZM15 5C15 5.55228 14.5523 6 14 6C13.4477 6 13 5.55228 13 5C13 4.44772 13.4477 4 14 4C14.5523 4 15 4.44772 15 5ZM14 10C14.5523 10 15 9.55228 15 9C15 8.44772 14.5523 8 14 8C13.4477 8 13 8.44772 13 9C13 9.55228 13.4477 10 14 10Z" fill="#212121" />
+                        </svg>
+                    </div>
+                    <div class="hover_home">
+                        <span>каталог</span>
+                        <svg width="98" height="30" viewBox="0 0 98 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00732 0C7.35047 0 6.00732 1.34315 6.00732 3V9.76758L0.757324 15.0176L6.00732 20.2676V27C6.00732 28.6569 7.35047 30 9.00732 30H95.0073C96.6642 30 98.0073 28.6569 98.0073 27V3C98.0073 1.34315 96.6642 0 95.0073 0H9.00732Z" fill="#212121" />
+                        </svg>
+                    </div>
+                </a>
+                <a href="" class="menu_btn settings">
+                    <div class="menu_btn_icon">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.46957 0H7.46957V1V2.09326C7.07788 2.22256 6.6962 2.38042 6.32761 2.56557L5.55928 1.79724L4.85217 1.09013L4.14507 1.79724L1.79724 4.14507L1.09013 4.85217L1.79724 5.55928L2.56557 6.32761C2.38042 6.6962 2.22256 7.07788 2.09326 7.46957H1H0V8.46957V11.7913V12.7913H1H2.09326C2.22256 13.183 2.38042 13.5647 2.56557 13.9333L1.79724 14.7016L1.09013 15.4087L1.79724 16.1158L4.14507 18.4636L4.85217 19.1707L5.55928 18.4636L6.32761 17.6953C6.6962 17.8804 7.07788 18.0383 7.46957 18.1676V19.2609V20.2609H8.46957H11.7913H12.7913V19.2609V18.1676C13.183 18.0383 13.5647 17.8804 13.9333 17.6953L14.7016 18.4636L15.4087 19.1707L16.1158 18.4636L18.4636 16.1158L19.1707 15.4087L18.4636 14.7016L17.6953 13.9333C17.8804 13.5647 18.0383 13.183 18.1676 12.7913H19.2609H20.2609V11.7913V8.46957V7.46957H19.2609H18.1676C18.0383 7.07788 17.8804 6.6962 17.6953 6.32761L18.4636 5.55928L19.1707 4.85217L18.4636 4.14507L16.1158 1.79724L15.4087 1.09013L14.7016 1.79724L13.9333 2.56557C13.5647 2.38042 13.183 2.22256 12.7913 2.09326V1V0H11.7913H8.46957ZM9.46957 2.85217V2H10.7913V2.85217V3.65081L11.5702 3.82742C12.2795 3.98825 12.9564 4.26817 13.5721 4.65528L14.2474 5.07985L14.8115 4.5158L15.4087 3.91856L16.3423 4.85217L15.7451 5.44942L15.181 6.01346L15.6056 6.68877C15.9927 7.3045 16.2726 7.9814 16.4335 8.6907L16.6101 9.46957H17.4087H18.2609V10.7913H17.4087H16.6101L16.4335 11.5702C16.2726 12.2795 15.9927 12.9564 15.6056 13.5721L15.181 14.2474L15.7451 14.8115L16.3423 15.4087L15.4087 16.3423L14.8115 15.7451L14.2474 15.181L13.5721 15.6056C12.9564 15.9927 12.2795 16.2726 11.5702 16.4335L10.7913 16.6101V17.4087V18.2609H9.46957V17.4087V16.6101L8.6907 16.4335C7.9814 16.2726 7.3045 15.9927 6.68877 15.6056L6.01346 15.181L5.44942 15.7451L4.85217 16.3423L3.91856 15.4087L4.5158 14.8115L5.07985 14.2474L4.65528 13.5721C4.26817 12.9564 3.98825 12.2795 3.82742 11.5702L3.65081 10.7913H2.85217H2V9.46957H2.85217H3.65081L3.82742 8.6907C3.98825 7.9814 4.26817 7.3045 4.65528 6.68877L5.07985 6.01346L4.5158 5.44942L3.91856 4.85217L4.85217 3.91856L5.44942 4.5158L6.01346 5.07985L6.68877 4.65528C7.3045 4.26817 7.9814 3.98825 8.6907 3.82742L9.46957 3.65081V2.85217ZM8.56717 9.93852C8.56717 9.05006 9.28741 8.32982 10.1759 8.32982C11.0643 8.32982 11.7846 9.05006 11.7846 9.93852C11.7846 10.827 11.0643 11.5472 10.1759 11.5472C9.28741 11.5472 8.56717 10.827 8.56717 9.93852ZM10.1759 6.32982C8.18284 6.32982 6.56717 7.94549 6.56717 9.93852C6.56717 11.9315 8.18284 13.5472 10.1759 13.5472C12.1689 13.5472 13.7846 11.9315 13.7846 9.93852C13.7846 7.94549 12.1689 6.32982 10.1759 6.32982Z" fill="#212121" />
+                        </svg>
+                    </div>
+                    <div class="hover_home">
+                        <span>настройки</span>
+                        <svg width="98" height="30" viewBox="0 0 98 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00732 0C7.35047 0 6.00732 1.34315 6.00732 3V9.76758L0.757324 15.0176L6.00732 20.2676V27C6.00732 28.6569 7.35047 30 9.00732 30H95.0073C96.6642 30 98.0073 28.6569 98.0073 27V3C98.0073 1.34315 96.6642 0 95.0073 0H9.00732Z" fill="#212121" />
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+            <div class="logo_menu">
+                <img src="source/img/playeer/logo_menu.svg" alt="">
+            </div>
+
+            <div class="report">
+                <button class="reportbtn">
+
+                    <svg width="32" height="29" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.5116 18.816L14.8076 9.072H17.2236L16.3596 18.816H15.5116ZM14.7756 22V19.712H17.0796V22H14.7756Z" fill="#212121" />
+                        <path d="M30.7226 24.5L17.7322 2C16.9624 0.66667 15.0379 0.666663 14.2681 2L1.27774 24.5C0.507943 25.8333 1.47019 27.5 3.00979 27.5H28.9906C30.5302 27.5 31.4924 25.8333 30.7226 24.5Z" stroke="#212121" stroke-width="2" />
+                    </svg>
+
+                </button>
+
+                <div class="circles_report">
+                    <div class="circlre"></div>
+                    <div class="circlre"></div>
+                    <div class="circlre"></div>
+                </div>
+            </div>
+
+        </nav>
+    </aside>
+
+    <main>
+
+        <section class="left_player">
+
+            <div class="player_block">
+                <div class="player_box">
+                    <video id="my-video" class="video-js" preload="auto" width="987" height="555" data-setup='{}'>
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                    <div class="custom-controls">
+
+                        <button class="custom-button player_play" id="playerPlay" onclick="togglePlay()">
+                            <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.5 9.13398C17.1667 9.51888 17.1667 10.4811 16.5 10.866L1.5 19.5263C0.833335 19.9112 9.70611e-07 19.4301 1.00426e-06 18.6603L1.76136e-06 1.33975C1.79501e-06 0.569945 0.833336 0.0888202 1.5 0.47372L16.5 9.13398Z" fill="white"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="custom-button player_stop" id="playerStop" onclick="togglePlay()" style="display: none;">
+                            <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 2C0 0.895431 0.89543 0 2 0H2.54546C3.65002 0 4.54545 0.895431 4.54545 2V18C4.54545 19.1046 3.65002 20 2.54545 20H2C0.89543 20 0 19.1046 0 18V2Z" fill="white" />
+                                <path d="M9.09082 2C9.09082 0.895431 9.98625 0 11.0908 0H11.6363C12.7408 0 13.6363 0.895431 13.6363 2V18C13.6363 19.1046 12.7408 20 11.6363 20H11.0908C9.98625 20 9.09082 19.1046 9.09082 18V2Z" fill="white" />
+                            </svg>
+                        </button>
+
+                        <div class="progress-container_player" onclick="seek(event)">
+                            <div class="progress-bar_player"></div>
+                        </div>
+
+                        <div class="volue_adj">
+                            <div class="volume-slider">
+                                <div class="volume-hover-area"></div> 
+                                <div class="volume-fill"></div>
+                                <div class="volume-thumb"></div>
+                            </div>
+                            <button class="custom-button" onclick="toggleSoundAdjustment()">
+                                <svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 11.6088V6.39123C1 5.67085 1.58204 5.08685 2.3 5.08685H5.80636C6.06298 5.08685 6.31401 5.01062 6.52747 4.86778L11.9789 1.22127C12.8429 0.643373 14 1.26477 14 2.30658V15.6934C14 16.7353 12.8429 17.3567 11.9789 16.7787L6.52747 13.1322C6.31401 12.9893 6.06298 12.9131 5.80636 12.9131H2.3C1.58204 12.9131 1 12.3292 1 11.6088Z" stroke="white"/>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <button class="custom-button" onclick="togglePiP()">
+                            <svg width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 2C0 0.895431 0.895431 0 2 0H12C13.1046 0 14 0.895431 14 2V10C14 10.5523 13.5523 11 13 11H2C0.89543 11 0 10.1046 0 9V2Z" fill="white"/>
+                                <path d="M15.75 13H13.25C13.1119 13 13 12.8881 13 12.75C13 12.6119 13.1119 12.5 13.25 12.5H15.25C15.3881 12.5 15.5 12.3881 15.5 12.25V10.25C15.5 10.1119 15.6119 10 15.75 10C15.8881 10 16 10.1119 16 10.25V12.75C16 12.8881 15.8881 13 15.75 13Z" fill="white"/>
+                                <path d="M0.25 2C0.25 1.0335 1.0335 0.25 2 0.25H12C12.9665 0.25 13.75 1.0335 13.75 2V10C13.75 10.4142 13.4142 10.75 13 10.75H2C1.0335 10.75 0.25 9.9665 0.25 9V2ZM14.25 2C14.25 1.29318 13.9241 0.662489 13.4143 0.25H23C23.9665 0.25 24.75 1.0335 24.75 2V14C24.75 14.9665 23.9665 15.75 23 15.75H2C1.0335 15.75 0.25 14.9665 0.25 14V10.4143C0.662489 10.9241 1.29318 11.25 2 11.25H13C13.6904 11.25 14.25 10.6904 14.25 10V2ZM15.75 12.75H15.25C15.5261 12.75 15.75 12.5261 15.75 12.25V12.75ZM13.25 13.25H15.75C16.0261 13.25 16.25 13.0261 16.25 12.75V10.25C16.25 9.97386 16.0261 9.75 15.75 9.75C15.4739 9.75 15.25 9.97386 15.25 10.25V12.25H13.25C12.9739 12.25 12.75 12.4739 12.75 12.75C12.75 13.0261 12.9739 13.25 13.25 13.25Z" stroke="white" stroke-width="0.5"/>
+                            </svg>
+                        </button>
+
+                        <button class="custom-button" onclick="toggleQualityMenu()">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.90699 0H6.40699V0.5V1.70143C5.91899 1.84253 5.44813 2.03727 5.00302 2.28208L4.15774 1.43679L3.80418 1.08324L3.45063 1.43679L1.43679 3.45063L1.08324 3.80418L1.43679 4.15774L2.28208 5.00302C2.03727 5.44813 1.84253 5.91899 1.70143 6.40699H0.5H0V6.90699V9.75619V10.2562H0.5H1.70143C1.84253 10.7442 2.03727 11.2151 2.28208 11.6602L1.43679 12.5054L1.08324 12.859L1.43679 13.2125L3.45063 15.2264L3.80418 15.5799L4.15774 15.2264L5.00302 14.3811C5.44813 14.6259 5.91899 14.8206 6.40699 14.9617V16.1632V16.6632H6.90699H9.75619H10.2562V16.1632V14.9617C10.7442 14.8206 11.2151 14.6259 11.6602 14.3811L12.5054 15.2264L12.859 15.5799L13.2125 15.2264L15.2264 13.2125L15.5799 12.859L15.2264 12.5054L14.3811 11.6602C14.6259 11.2151 14.8206 10.7442 14.9617 10.2562H16.1632H16.6632V9.75619V6.90699V6.40699H16.1632H14.9617C14.8206 5.91899 14.6259 5.44813 14.3811 5.00302L15.2264 4.15774L15.5799 3.80418L15.2264 3.45063L13.2125 1.43679L12.859 1.08324L12.5054 1.43679L11.6602 2.28208C11.2151 2.03727 10.7442 1.84253 10.2562 1.70143V0.5V0H9.75619H6.90699ZM7.40699 2.08869V1H9.25619V2.08869V2.48801L9.64562 2.57632C10.2935 2.72321 10.9117 2.97888 11.4741 3.33244L11.8117 3.54472L12.0937 3.2627L12.859 2.49745L14.1657 3.80418L13.4005 4.56943L13.1185 4.85145L13.3307 5.18911C13.6843 5.75148 13.94 6.36972 14.0869 7.01756L14.1752 7.40699H14.5745H15.6632V9.25619H14.5745H14.1752L14.0869 9.64562C13.94 10.2935 13.6843 10.9117 13.3307 11.4741L13.1185 11.8117L13.4005 12.0937L14.1657 12.859L12.859 14.1657L12.0937 13.4005L11.8117 13.1185L11.4741 13.3307C10.9117 13.6843 10.2935 13.94 9.64562 14.0869L9.25619 14.1752V14.5745V15.6632H7.40699V14.5745V14.1752L7.01756 14.0869C6.36972 13.94 5.75148 13.6843 5.18911 13.3307L4.85145 13.1185L4.56943 13.4005L3.80418 14.1657L2.49745 12.859L3.2627 12.0937L3.54472 11.8117L3.33244 11.4741C2.97888 10.9117 2.72321 10.2935 2.57632 9.64562L2.48801 9.25619H2.08869H1V7.40699H2.08869H2.48801L2.57632 7.01756C2.72321 6.36972 2.97888 5.75148 3.33244 5.18911L3.54472 4.85145L3.2627 4.56943L2.49745 3.80418L3.80418 2.49745L4.56943 3.2627L4.85145 3.54472L5.18911 3.33244C5.75148 2.97888 6.36972 2.72321 7.01756 2.57632L7.40699 2.48801V2.08869ZM6.63319 8.16843C6.63319 7.20878 7.41113 6.43083 8.37078 6.43083C9.33043 6.43083 10.1084 7.20878 10.1084 8.16843C10.1084 9.12808 9.33043 9.90603 8.37078 9.90603C7.41113 9.90603 6.63319 9.12808 6.63319 8.16843ZM8.37078 5.43083C6.85885 5.43083 5.63319 6.6565 5.63319 8.16843C5.63319 9.68037 6.85885 10.906 8.37078 10.906C9.88272 10.906 11.1084 9.68037 11.1084 8.16843C11.1084 6.6565 9.88272 5.43083 8.37078 5.43083Z" fill="white" />
+                            </svg>
+                        </button>
+
+                        <div class="quality-menu">
+                            <div class="quality quality-active"  data-quality="1080" onclick="changeQuality('1080')">1080P</div>
+                            <div class="quality "  data-quality="720" onclick="changeQuality('720')">720P</div>
+                            <div class="quality "  data-quality="480" onclick="changeQuality('480')">480P</div>
+                        </div>
+
+                        <button class="custom-button" onclick="toggleFullScreen()">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9 0H15H16V0.999999V7H15L15 0.999999L9 1V0ZM0 9V15V16H1H7V15L1 15L1 9H0ZM9 16H15H16V15V9H15L15 15L9 15V16ZM7 0H1H0V1V7L1 7L1 1L7 1V0Z" fill="white" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="inf_title">
+
+                <div class="title_main" data-nametitle="kimetsu_no_yaiba">
+
+                    <h2>Клинок, рассекающий демонов: Тренировка столпов</h2>
+
+                </div>
+
+                <div class="tag_main">
+
+                    <span class="tag">экшен</span>
+
+                    <span class="tag">фэнтези</span>
+
+                    <span class="tag">историческое</span>
+
+                    <span class="tag">сёнен</span>
+
+                </div>
+            </div>
+
+            <div class="viewing_progress">
+
+                <div class="title_progress">
+                    <h3>ПРОГРЕСС ПРОСМОТРА</h3>
+                </div>
+
+                <div class="progress_block">
+                    <div class="container">
+
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+
+                        <input type="range" id="slider" min="0" max="100" value="40">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="series_list">
+                <div class="top_series_list">
+                    <h3>СПИСОК СЕРИЙ</h3>
+
+                    <div class="search_series_block">
+
+                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.8152 13.3697C15.231 13.3697 18.0001 10.6006 18.0001 7.18484C18.0001 3.76905 15.231 1 11.8152 1C8.39942 1 5.63037 3.76905 5.63037 7.18484C5.63037 10.6006 8.39942 13.3697 11.8152 13.3697Z" stroke="#212121" stroke-width="2" stroke-miterlimit="10" />
+                            <path d="M1 17.9993L7.18484 11.8145" stroke="#212121" stroke-width="2" stroke-miterlimit="10" />
+                        </svg>
+
+                        <input id="searchSeriesInput" placeholder="НАЙТИ СЕРИЮ" type="text">
+
+                    </div>
+                </div>
+
+                <div class="series">
+
+                    <button class="prev_series" id="prevSeries" >
+                        <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.02344 7.83267L0.127441 5.33667V3.38467L5.02344 0.888672V3.03267L1.87144 4.34467L5.02344 5.68867V7.83267Z" fill="white" />
+                        </svg>
+                    </button>
+
+                    <div class="episode_block" id="episodeBlock">
+                        <div class="episode_container" id="episodeContainer">
+                            <button class="episode episode_active" data-episode="1" onclick="changeEpisode('1')">
+                                1
+                            </button>
+                            <button class="episode" data-episode="2" onclick="changeEpisode('2')">
+                                2
+                            </button>
+                            <button class="episode" data-episode="3" onclick="changeEpisode('3')">
+                                3
+                            </button>
+                            <button class="episode" data-episode="4" onclick="changeEpisode('4')">
+                                4
+                            </button>
+                            <button class="episode" data-episode="5" onclick="changeEpisode('5')">
+                                5
+                            </button>
+                            <button class="episode" data-episode="6" onclick="changeEpisode('6')">
+                                6
+                            </button>
+                            <button class="episode" data-episode="7" onclick="changeEpisode('7')">
+                                7
+                            </button>
+                            <button class="episode" data-episode="8" onclick="changeEpisode('8')">
+                                8
+                            </button>
+                            <button class="episode" data-episode="9" onclick="changeEpisode('9')">
+                                9
+                            </button>
+                            <button class="episode" data-episode="10" onclick="changeEpisode('10')">
+                                10
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="next_series" id="nextSeries">
+                        <svg width="6" height="8" viewBox="0 0 6 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.239258 7.83267V5.68867L3.37526 4.34467L0.239258 3.03267V0.888672L5.11926 3.38467V5.33667L0.239258 7.83267Z" fill="white" />
+                        </svg>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="right_player" >
+
+            <div class="right_player_block">
+                
+                <div class="settings_player_secondary">
+
+                    <div class="voice_acting">
+                        <h3 class="title_voice_acting">ВЫБОР ОЗВУЧКИ</h3>
+                        <div class="voice_acting_block">
+                            <button class="voice voice_active" data-voice="Anilibria" onclick="changeVoice('Anilibria')">Anilibria</button>
+                            <button class="voice" data-voice="AmiDub" onclick="changeVoice('AmiDub')">AmiDub</button>
+                        </div>
+                    </div>
+    
+                    <div class="players_selection">
+                        <h3 class="title_player_selection">ВЫБОР ПЛЕЕРА</h3>
+                        <div class="players_selection_block">
+                            <button class="players player_active">Anibox</button>
+                        </div>
+                    </div>
+    
+                    <div class="settings_secondary">
+                        <h3 class="title_settings_secondary">НАСТРОЙКИ ПЛЕЕРА</h3>
+                        <div class="settings_secondary_block">
+                            <button class="setting">автовоспроизведение</button>
+                        </div>
+                    </div>
+    
+                </div>
+    
+                <div class="continue_viewing">
+                    <h3 class="title_continue_viewing">ПРОДОЛЖИТЬ ПРОСМОТР</h3>
+                    <div class="continue_viewing_block">
+                        <div class="continue_blocks">
+                            
+                            <div class="continue_block">
+    
+                                <div class="coutinue_img" style="background-image: url(source/img/playeer/contiune_img.png); width: 72px; height: 102px; border-radius: 5px;"></div>
+        
+                                <div class="coutinue_inf">
+        
+                                    <div class="coutinue_inf_top">
+                                        <h4>Клинок, рассекающий демонов: Тренировка столпов</h4>
+                                        <div class="coutinue_inf_top_block">
+                                            <div class="coutinue_progress_series">ПРОСМОТРЕНО <span class="count_series_now">2</span> из <span class="count_series_end">25</span> ЭПИЗОДА</div>
+                                            <button class="coutinue_button">ПРОДОЛЖИТЬ</button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="coutinue_inf_progress_bar">
+                                        <div class="container_bar">
+                        
+                                            <div class="container_progress-bar">
+                                                <div class="container_progress" id="progress"></div>
+                                            </div>
+                        
+                                            <input type="range" id="container_slider" min="0" max="100" value="40">
+                        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+    
+                            <div class="continue_block">
+    
+                                <div class="coutinue_img" style="background-image: url(source/img/playeer/contiune_img.png); width: 72px; height: 102px; border-radius: 5px;"></div>
+        
+                                <div class="coutinue_inf">
+        
+                                    <div class="coutinue_inf_top">
+                                        <h4>Клинок, рассекающий демонов: Тренировка столпов</h4>
+                                        <div class="coutinue_inf_top_block">
+                                            <div class="coutinue_progress_series">ПРОСМОТРЕНО <span class="count_series_now">2</span> из <span class="count_series_end">25</span> ЭПИЗОДА</div>
+                                            <button class="coutinue_button">ПРОДОЛЖИТЬ</button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="coutinue_inf_progress_bar">
+                                        <div class="container_bar">
+                        
+                                            <div class="container_progress-bar">
+                                                <div class="container_progress" id="progress"></div>
+                                            </div>
+                        
+                                            <input type="range" id="container_slider" min="0" max="100" value="40">
+                        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+    
+                            <div class="continue_block">
+    
+                                <div class="coutinue_img" style="background-image: url(source/img/playeer/contiune_img.png); width: 72px; height: 102px; border-radius: 5px;"></div>
+        
+                                <div class="coutinue_inf">
+        
+                                    <div class="coutinue_inf_top">
+                                        <h4>Клинок, рассекающий демонов: Тренировка столпов</h4>
+                                        <div class="coutinue_inf_top_block">
+                                            <div class="coutinue_progress_series">ПРОСМОТРЕНО <span class="count_series_now">2</span> из <span class="count_series_end">25</span> ЭПИЗОДА</div>
+                                            <button class="coutinue_button">ПРОДОЛЖИТЬ</button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="coutinue_inf_progress_bar">
+                                        <div class="container_bar">
+                        
+                                            <div class="container_progress-bar">
+                                                <div class="container_progress" id="progress"></div>
+                                            </div>
+                        
+                                            <input type="range" id="container_slider" min="0" max="100" value="40">
+                        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+    
+                            <div class="continue_block">
+    
+                                <div class="coutinue_img" style="background-image: url(source/img/playeer/contiune_img.png); width: 72px; height: 102px; border-radius: 5px;"></div>
+        
+                                <div class="coutinue_inf">
+        
+                                    <div class="coutinue_inf_top">
+                                        <h4>Клинок, рассекающий демонов: Тренировка столпов</h4>
+                                        <div class="coutinue_inf_top_block">
+                                            <div class="coutinue_progress_series">ПРОСМОТРЕНО <span class="count_series_now">2</span> из <span class="count_series_end">25</span> ЭПИЗОДА</div>
+                                            <button class="coutinue_button">ПРОДОЛЖИТЬ</button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="coutinue_inf_progress_bar">
+                                        <div class="container_bar">
+                        
+                                            <div class="container_progress-bar">
+                                                <div class="container_progress" id="progress"></div>
+                                            </div>
+                        
+                                            <input type="range" id="container_slider" min="0" max="100" value="40">
+                        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+    
+                            <div class="continue_block">
+    
+                                <div class="coutinue_img" style="background-image: url(source/img/playeer/contiune_img.png); width: 72px; height: 102px; border-radius: 5px;"></div>
+        
+                                <div class="coutinue_inf">
+        
+                                    <div class="coutinue_inf_top">
+                                        <h4>Клинок, рассекающий демонов: Тренировка столпов</h4>
+                                        <div class="coutinue_inf_top_block">
+                                            <div class="coutinue_progress_series">ПРОСМОТРЕНО <span class="count_series_now">2</span> из <span class="count_series_end">25</span> ЭПИЗОДА</div>
+                                            <button class="coutinue_button">ПРОДОЛЖИТЬ</button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="coutinue_inf_progress_bar">
+                                        <div class="container_bar">
+                        
+                                            <div class="container_progress-bar">
+                                                <div class="container_progress" id="progress"></div>
+                                            </div>
+                        
+                                            <input type="range" id="container_slider" min="0" max="100" value="40">
+                        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+    
+                            <div class="continue_block">
+    
+                                <div class="coutinue_img" style="background-image: url(source/img/playeer/contiune_img.png); width: 72px; height: 102px; border-radius: 5px;"></div>
+        
+                                <div class="coutinue_inf">
+        
+                                    <div class="coutinue_inf_top">
+                                        <h4>Клинок, рассекающий демонов: Тренировка столпов</h4>
+                                        <div class="coutinue_inf_top_block">
+                                            <div class="coutinue_progress_series">ПРОСМОТРЕНО <span class="count_series_now">2</span> из <span class="count_series_end">25</span> ЭПИЗОДА</div>
+                                            <button class="coutinue_button">ПРОДОЛЖИТЬ</button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="coutinue_inf_progress_bar">
+                                        <div class="container_bar">
+                        
+                                            <div class="container_progress-bar">
+                                                <div class="container_progress" id="progress"></div>
+                                            </div>
+                        
+                                            <input type="range" id="container_slider" min="0" max="100" value="40">
+                        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+    
+                            <div class="continue_block">
+    
+                                <div class="coutinue_img" style="background-image: url(source/img/playeer/contiune_img.png); width: 72px; height: 102px; border-radius: 5px;"></div>
+        
+                                <div class="coutinue_inf">
+        
+                                    <div class="coutinue_inf_top">
+                                        <h4>Клинок, рассекающий демонов: Тренировка столпов</h4>
+                                        <div class="coutinue_inf_top_block">
+                                            <div class="coutinue_progress_series">ПРОСМОТРЕНО <span class="count_series_now">2</span> из <span class="count_series_end">25</span> ЭПИЗОДА</div>
+                                            <button class="coutinue_button">ПРОДОЛЖИТЬ</button>
+                                        </div>
+                                    </div>
+        
+                                    <div class="coutinue_inf_progress_bar">
+                                        <div class="container_bar">
+                        
+                                            <div class="container_progress-bar">
+                                                <div class="container_progress" id="progress"></div>
+                                            </div>
+                        
+                                            <input type="range" id="container_slider" min="0" max="100" value="40">
+                        
+                                        </div>
+                                    </div>
+        
+                                </div>
+                            </div>
+    
+                        </div> 
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        
+
+    </main>
+
+    <footer>
+        <p>Видео плеер от сайта AnimeBox ещё находится в разработке и может работать нестабильно. Мы продолжаем улучшать его функциональность и исправлять ошибки. Спасибо за понимание и терпение!</p>
+    </footer>
+
+    
+</body>
+    
+    <script src="https://vjs.zencdn.net/8.3.0/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"></script>
+    <script src="source/js/player.js"></script>
+    <script>
+
+    </script>
+</html>

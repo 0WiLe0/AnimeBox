@@ -1,0 +1,319 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+}
+
+input.middle:focus {
+    outline-width: 0;
+}
+
+/* Меню */
+
+aside{
+    position: fixed;
+}
+nav{
+    width: 120px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #212121;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 11px;
+    margin-top: 33px;
+}
+.profile, .player, .rating, .catalog, .settings, .reportbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 11px;
+}
+
+.hover_home{
+    display: none;
+    position: relative;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    z-index: 100000;
+
+}
+
+.menu_btn:hover .hover_home {
+    display: block;
+}
+
+.hover_home span{
+    width: 56px;
+    position: absolute;
+    z-index: 6;
+    top: -8px;
+    left: 37px;
+}
+.hover_home svg{
+    position: absolute;
+    z-index: 5;
+    top: -15px;
+    left: 14px;
+}
+
+.menu_btn .menu_btn_icon{
+    transition: .2s;
+}
+.menu_btn:hover{
+    background-color: #212121;
+    transition: .2s;
+}
+
+.menu_btn:hover .menu_btn_icon svg path{
+    fill: #fff;
+    transition: .2s;
+}
+
+
+.menu_btn {
+    position: relative;
+    z-index: 10;
+}
+
+.circles_report{
+    width: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3px;
+    margin-bottom: 33px;
+}
+.circlre{
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: #212121;
+}
+
+
+/* Основа */
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin-left: 120px;
+    height: 100%;
+}
+
+.video_block {
+    position: relative;
+    width: 100%;
+    max-width: 1719px; /* Максимальная ширина контейнера */
+    margin: 0 auto;
+    margin-top: 33px;
+    z-index: 0;
+}
+
+.video_container {
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    padding-top: 31.15%; /* Соотношение высоты к ширине (600 / 1757 * 100%) */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.55);
+}
+
+.video_container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(40%);
+    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.55);
+    object-fit: cover; /* Сохраняет пропорции и заполняет контейнер */
+}
+.video_inf {
+    position: absolute;
+    bottom:0;
+    right: 0;
+    margin-right: 26px;
+}
+
+.video_inf h2{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 29px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #fff;
+    margin-bottom: 16px;
+}
+
+.tags {
+    display: flex;
+    margin-bottom: 17px;
+}
+
+.tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    min-width: 66px;
+    height: 10px;
+    padding: 5px;
+    margin-right: 3px;
+}
+
+.video_btn {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 426px;
+    height: 51px;
+    background: #fff;
+    font-family: "Oswald", serif;
+    font-size: 15px;
+    border:none;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    margin-bottom: 28px;
+    transition: .2s;
+}
+
+.video_btn:hover{
+    background: #212121;
+    color: #fff;
+    margin-bottom: 28px;
+    transition: .2s;
+}
+
+.video_btn:hover svg path{
+    fill: #fff;
+    transition: .2s;
+}
+
+.video_btn span{
+    margin-right: 6px;
+}
+
+.beta_block{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1719px;
+    height: 100%;
+}
+
+.beta_inf{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 578px;
+    margin-right: 131px;
+}
+.beta_inf h3{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    margin-bottom: 23px;
+}
+.beta_inf p{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    margin-bottom: 28px;
+}
+.beta_inf a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 578px;
+    height: 65px;
+    background: #fff;
+    transition: .5s;
+}
+
+.beta_inf a:hover{
+    color: #fff;
+    border: 2px solid #212121;
+    background-color: #212121;
+    transition: .5s;
+}
+
+.beta_stats{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.beta_stats h3{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    color: #212121;
+}
+
+.beta_stats span{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #212121;
+}
+
+.count_user{
+    font-family: "Oswald", serif;
+    font-weight: 600;
+    font-size: 120px;
+    text-transform: uppercase;
+    color: #212121;
+}
