@@ -7,6 +7,10 @@ a{
     text-decoration: none;
 }
 
+li{
+    list-style: none;
+}
+
 body{
     height: 100vh;
     overflow: hidden;
@@ -185,4 +189,166 @@ main{
     margin-left: 5px;
 }
 
+.rating-block {
+    font-family: 'Arial', sans-serif;
+    color: #222;
+    max-width: 400px;
+}
+.anime_information-blocks{
+    display: flex;
+}
 
+.header-block{
+    width: 1731px;
+    height: 253px;
+    border-radius: 5px;
+    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.25);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 33px;
+    margin-bottom: 15px;
+}
+
+.anime_information-block{
+    display: flex;
+}
+
+.anime_image{
+    width: 219px;
+    height: 308px;
+    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.25);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+}
+.anime_information{
+    margin-left: 23px;
+}
+
+.title_anime{
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 33px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    margin-bottom: 13px;
+}
+
+.tags{
+    display: flex;
+    margin-bottom: 35px;
+}
+
+.tag{
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #212121;
+    padding: 5px 16px;
+    border: 2px solid #212121;
+    margin-right: 6px;
+    border-radius: 5px;
+}
+
+.info_list{
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+}
+
+.info_list>ul>li{
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    margin-bottom: 10px;
+}
+.li_value{
+    margin-left: 51px;
+}
+
+.descr-block{
+    margin-bottom: 36px;
+}
+.title_descr{
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+    margin-bottom: 9px;
+}
+.descr_anime{
+    width: 1067px;
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+
+.viewing_timeline-block{
+
+}
+.title_viewing_timeline{
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+.button_viewing_timeline{
+    border: 2px solid #212121;
+    border-radius: 5px;
+    width: 149px;
+    height: 32px;
+    background: #fff;
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #212121;
+}
+
+.title_user_rating_anime{
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 27px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+.stars-block{
+    display: flex;
+    align-items: center;
+}
+.stars{
+    display: flex;
+}
+.rating-result{
+    display: flex;
+    align-items: center;
+    font-family: Oswald, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: justify;
+    color: #212121;
+}
+#rating-value{
+    margin-left: 7px;
+}
+.rating-result img{
+    margin: 0 3px;
+}
