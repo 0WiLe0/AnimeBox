@@ -1,0 +1,480 @@
+/* Общие стили внутренних страниц: сброс, токены, меню, футер, фокус, модалка, тост.
+   Mobile-first: базовые правила — телефон, с 768px — боковая панель. */
+
+:root{
+    --ink: #212121;
+    --ink-soft: #575757;
+    --paper: #fff;
+    --accent: #A8EFA8;
+    --danger: #c62828;
+    --radius: 5px;
+    --border: 2px solid var(--ink);
+    --tap: 44px;
+    --sidebar: 120px;
+    --tabbar: 64px;
+    --gutter: 16px;
+    --font: "Oswald", "Arial Narrow", Arial, sans-serif;
+}
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    -webkit-text-size-adjust: 100%;
+}
+
+body{
+    min-height: 100vh;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font);
+    overflow-x: hidden;
+}
+
+img, video, svg{
+    max-width: 100%;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+button{
+    font: inherit;
+    color: inherit;
+    background: none;
+}
+
+:focus-visible{
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+}
+
+.visually-hidden{
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.skip-link{
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 1000;
+    padding: 10px 16px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    transform: translateY(-200%);
+}
+.skip-link:focus{
+    transform: none;
+}
+
+/* ---------- Меню: телефон — нижний таб-бар ---------- */
+
+.sidebar{
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--paper);
+    border-top: var(--border);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+.navigate{
+    height: var(--tabbar);
+    display: flex;
+    align-items: center;
+}
+
+.menu{
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu li{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.menu_btn{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: var(--tap);
+    min-height: 56px;
+    padding: 4px 2px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-family: var(--font);
+}
+
+.menu_btn_icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: var(--border);
+    border-radius: var(--radius);
+    transition: background-color .2s;
+}
+
+.menu_btn_icon svg path{
+    transition: fill .2s;
+}
+
+.menu_label{
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.menu_btn[aria-current="page"] .menu_btn_icon,
+.menu_btn:hover .menu_btn_icon{
+    background: var(--ink);
+}
+.menu_btn[aria-current="page"] .menu_btn_icon svg path,
+.menu_btn:hover .menu_btn_icon svg path{
+    fill: var(--paper);
+}
+
+.menu_btn.is-soon .menu_btn_icon{
+    border-style: dashed;
+}
+
+.hover_home,
+.logo_menu,
+.report{
+    display: none;
+}
+
+/* ---------- Основная область ---------- */
+
+body.app > main{
+    padding: 16px var(--gutter) calc(var(--tabbar) + 24px);
+    max-width: 1760px;
+    margin: 0 auto;
+}
+
+.app-footer{
+    padding: 16px var(--gutter) calc(var(--tabbar) + 24px);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    align-items: center;
+    justify-content: space-between;
+}
+body.app > main + .app-footer{
+    margin-top: calc(-1 * var(--tabbar));
+}
+
+.link-btn{
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    border: none;
+    cursor: pointer;
+    color: var(--ink);
+}
+
+/* Общая кнопка в стиле проекта */
+.btn-ink,
+.btn-outline{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: var(--tap);
+    padding: 0 24px;
+    border: var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font);
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+}
+.btn-ink{ background: var(--ink); color: var(--paper); }
+.btn-ink:hover{ background: var(--paper); color: var(--ink); }
+.btn-ink svg path{ fill: currentColor; }
+.btn-outline{ background: var(--paper); color: var(--ink); }
+.btn-outline:hover,
+.btn-outline[aria-pressed="true"],
+.btn-outline[aria-selected="true"]{ background: var(--ink); color: var(--paper); }
+
+/* ---------- Тост ---------- */
+
+.toast{
+    position: fixed;
+    z-index: 200;
+    left: 50%;
+    bottom: calc(var(--tabbar) + 16px);
+    transform: translate(-50%, 20px);
+    max-width: calc(100vw - 32px);
+    padding: 12px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+}
+.toast.is-visible{
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ---------- Модалка «Сообщить о проблеме» ---------- */
+
+.modal{
+    width: min(480px, calc(100vw - 32px));
+    max-height: calc(100vh - 32px);
+    margin: auto;
+    padding: 24px;
+    border: var(--border);
+    border-radius: var(--radius);
+    color: var(--ink);
+    font-family: var(--font);
+}
+.modal::backdrop{
+    background: rgba(33, 33, 33, .6);
+}
+.modal h2{
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-right: 44px;
+}
+.modal p{
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+.modal label{
+    display: block;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+.modal textarea,
+.modal select{
+    width: 100%;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 10px 12px;
+    font: 16px/1.4 Arial, sans-serif;
+    margin-bottom: 16px;
+    min-height: var(--tap);
+}
+.modal textarea{
+    min-height: 120px;
+    resize: vertical;
+}
+.modal_close{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: var(--tap);
+    height: var(--tap);
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+.modal_actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+.field-error{
+    color: var(--danger);
+    font-size: 14px;
+    margin: -10px 0 12px;
+    min-height: 1em;
+}
+
+/* ---------- С 768px — оригинальная боковая панель ---------- */
+
+@media (min-width: 768px){
+    .sidebar{
+        top: 0;
+        right: auto;
+        width: var(--sidebar);
+        border-top: none;
+        padding-bottom: 0;
+    }
+
+    .navigate{
+        height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 33px 0;
+    }
+
+    .menu{
+        flex: 0 0 auto;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .menu_btn{
+        min-height: var(--tap);
+        padding: 0;
+    }
+
+    .menu_btn_icon{
+        width: var(--tap);
+        height: var(--tap);
+    }
+
+    .menu_label{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+
+    /* «Облачко»-подсказка из оригинального дизайна: по hover и по фокусу */
+    .hover_home{
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: calc(100% + 0px);
+        transform: translateY(-50%);
+        width: 98px;
+        height: 30px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: var(--paper);
+        pointer-events: none;
+        z-index: 60;
+    }
+    .hover_home svg{
+        position: absolute;
+        inset: 0;
+    }
+    .hover_home span{
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding-left: 6px;
+        white-space: nowrap;
+    }
+    .menu_btn:hover .hover_home,
+    .menu_btn:focus-visible .hover_home{
+        display: block;
+    }
+
+    .logo_menu{
+        display: block;
+    }
+
+    .report{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .reportbtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: var(--tap);
+        height: var(--tap);
+        border: var(--border);
+        border-radius: var(--radius);
+        cursor: pointer;
+        transition: background-color .2s;
+    }
+    .reportbtn:hover{
+        background: var(--ink);
+    }
+    .reportbtn:hover svg path{
+        fill: var(--paper);
+        stroke: var(--paper);
+    }
+    .reportbtn:hover svg path:last-child{
+        fill: none;
+    }
+    .circles_report{
+        width: 40px;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 8px;
+    }
+    .circlre{
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--ink);
+    }
+
+    body.app > main{
+        margin-left: var(--sidebar);
+        margin-right: 0;
+        padding: 33px 24px 24px 0;
+    }
+    .app-footer{
+        margin-left: var(--sidebar);
+        padding: 16px 24px 24px 0;
+    }
+    body.app > main + .app-footer{
+        margin-top: 0;
+    }
+    .toast{
+        bottom: 24px;
+    }
+    .footer-report{
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

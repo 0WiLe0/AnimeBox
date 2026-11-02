@@ -1,602 +1,445 @@
-// Инициализация видеоплеера
+// Плеер AnimeBox: Video.js + собственные контролы.
+// Источник: HLS с сервера (source/server/anime/<тайтл>/<озвучка>/<серия>/<качество>/output.m3u8).
+// Пока сервера нет, при ошибке загрузки включается демо-ролик.
+
+const DEMO_SOURCE = { src: 'source/video/op_kinok1.mp4', type: 'video/mp4' };
+
 const player = videojs('my-video', {
     autoplay: false,
-    preload: 'auto',
-    fluid: true
+    preload: 'metadata',
+    fluid: true,
+    controls: false,
+    playsinline: true
 });
 
-// Извлечение названия аниме из HTML
-const titleElement = document.querySelector('.title_main');
-const animeName = titleElement ? titleElement.getAttribute('data-nametitle') : 'default_anime_name';
+const $ = selector => document.querySelector(selector);
+const $$ = selector => [...document.querySelectorAll(selector)];
 
-// Форматирование названия для использования в пути (если необходимо)
-const formattedAnimeName = animeName.toLowerCase().replace(/ /g, '_');
+const titleElement = $('.title_main');
+const animeName = (titleElement ? titleElement.dataset.nametitle : 'default_anime_name').toLowerCase().replace(/ /g, '_');
 
-// Константы для часто используемых селекторов
-const SELECTORS = {
-    EPISODE: '.episode',
-    QUALITY: '.quality',
-    VOICE: '.voice',
-    QUALITY_MENU: '.quality-menu',
-    PLAYER_PLAY: '#playerPlay',
-    PLAYER_STOP: '#playerStop',
-    PROGRESS_CONTAINER: '.progress-container_player',
-    PROGRESS_BAR: '.progress-bar_player',
-    VOLUME_CONTAINER: '.volue_adj',
-    VOLUME_SLIDER: '.volume-slider',
-    VOLUME_FILL: '.volume-fill',
-    VOLUME_THUMB: '.volume-thumb',
-    PLAYER_BOX: '.player_box',
-    PLAYER_BLOCK: '.player_block',
-    CUSTOM_CONTROLS: '.custom-controls',
-    VIDEO_CONTAINER: '#my-video'
+const ui = {
+    play: $('#playerPlay'),
+    pause: $('#playerStop'),
+    box: $('.player_box'),
+    controls: $('.custom-controls'),
+    status: $('.player_status'),
+    seek: $('.progress-container_player'),
+    seekBar: $('.progress-bar_player'),
+    time: $('.time_player'),
+    volumeBtn: $('#volumeBtn'),
+    volumeSlider: $('.volume-slider'),
+    volumeFill: $('.volume-fill'),
+    volumeThumb: $('.volume-thumb'),
+    qualityBtn: $('#qualityBtn'),
+    qualityMenu: $('.quality-menu'),
+    autoplay: $('.setting'),
+    search: $('#searchSeriesInput'),
+    episodeBlock: $('#episodeBlock'),
+    nowEpisode: $('#nowEpisode'),
+    nowVoice: $('#nowVoice')
 };
 
-let currentEpisode = 1; // Текущая серия
-let currentQuality = '1080'; // Текущее качество
-let currentVoice = 'AmiDub'; // Текущая озвучка
+const EPISODE_COUNT = $$('.episode').length;
+
+// Начальное состояние берём из разметки, чтобы UI и логика не расходились
+let currentEpisode = Number($('.episode_active')?.dataset.episode || 1);
+let currentQuality = $('.quality-active')?.dataset.quality || '1080';
+let currentVoice = $('.voice_active')?.dataset.voice || 'Anilibria';
 let volumeLevel = 0.5;
+let usingDemo = false;
 
-// Функция для установки источника видео
-function setVideoSource() {
-    if (isNaN(currentEpisode)) {
-        console.error("Invalid currentEpisode value:", currentEpisode);
-        currentEpisode = 1;
+const storage = {
+    get(key, fallback) {
+        try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); } catch (e) { return fallback; }
+    },
+    set(key, value) {
+        try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* приватный режим */ }
     }
+};
 
-    console.log(`Current Episode: ${currentEpisode}, Current Quality: ${currentQuality}, Current Voice: ${currentVoice}`);
-    const currentTime = player.currentTime();
-    const isPaused = player.paused();
+let isAutoplayEnabled = storage.get('autoplayEnabled', false) === true;
 
-    // Формирование пути к видео с использованием отформатированного названия аниме
-    const videoPath = `source/server/anime/${formattedAnimeName}/${currentVoice}/${currentEpisode}/${currentQuality}/output.m3u8`;
-    console.log(`Video Path: ${videoPath}`);
+function formatTime(sec) {
+    if (!isFinite(sec)) sec = 0;
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${String(s).padStart(2, '0')}`;
+}
 
+function showStatus(text) {
+    ui.status.textContent = text;
+    ui.status.hidden = !text;
+}
+
+function syncPlayButtons() {
+    const paused = player.paused();
+    ui.play.hidden = !paused;
+    ui.pause.hidden = paused;
+}
+
+// ---------- Источник ----------
+
+function setVideoSource({ keepTime = false } = {}) {
+    const time = keepTime ? player.currentTime() : 0;
+    const wasPlaying = !player.paused();
+
+    usingDemo = false;
+    showStatus('');
     player.src({
-        src: videoPath,
+        src: `source/server/anime/${animeName}/${currentVoice}/${currentEpisode}/${currentQuality}/output.m3u8`,
         type: 'application/x-mpegURL'
     });
 
     player.one('loadedmetadata', () => {
-        if (currentEpisode !== player.currentEpisode) {
-            player.currentTime(0); // Сбрасываем время на 0, если это новая серия
-        } else {
-            player.currentTime(currentTime); // Иначе восстанавливаем время
-        }
-
-        // Обновляем состояние кнопок после загрузки метаданных
-        const playBtn = document.querySelector(SELECTORS.PLAYER_PLAY);
-        const stopBtn = document.querySelector(SELECTORS.PLAYER_STOP);
-
-        if (player.paused()) {
-            playBtn.style.display = 'block';
-            stopBtn.style.display = 'none';
-        } else {
-            playBtn.style.display = 'none';
-            stopBtn.style.display = 'block';
-        }
+        player.currentTime(time);
+        if (wasPlaying) player.play();
     });
 
-    player.currentEpisode = currentEpisode; // Сохраняем текущую серию
+    ui.nowEpisode.textContent = currentEpisode;
+    ui.nowVoice.textContent = currentVoice;
+    document.title = `Серия ${currentEpisode} — Плеер — AnimeBox`;
 }
 
-// Проверяем, включено ли автовоспроизведение в localStorage
-let isAutoplayEnabled = localStorage.getItem('autoplayEnabled') === 'true';
-
-// Обновляем состояние кнопки автовоспроизведения
-const autoplayButton = document.querySelector('.setting');
-if (autoplayButton) {
-    if (isAutoplayEnabled) {
-        autoplayButton.classList.add('setting_active');
-    } else {
-        autoplayButton.classList.remove('setting_active');
-    }
-}
-
-// Функция для переключения автовоспроизведения
-function toggleAutoplay() {
-    isAutoplayEnabled = !isAutoplayEnabled;
-    localStorage.setItem('autoplayEnabled', isAutoplayEnabled);
-
-    const autoplayButton = document.querySelector('.setting');
-    if (autoplayButton) {
-        autoplayButton.classList.toggle('setting_active', isAutoplayEnabled);
-    }
-}
-
-// Добавляем обработчик для кнопки автовоспроизведения
-document.querySelector('.setting').addEventListener('click', toggleAutoplay);
-
-function playNextEpisode() {
-    const nextEpisode = currentEpisode + 1;
-    const nextEpisodeElement = document.querySelector(`${SELECTORS.EPISODE}[data-episode="${nextEpisode}"]`);
-
-    if (nextEpisodeElement) {
-        changeEpisode(nextEpisode);
-        player.play(); // Автоматически запускаем воспроизведение следующей серии
-    } else {
-        console.log("Это последняя серия.");
-        // Можно добавить уведомление пользователю, что это последняя серия
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Проверяем состояние автовоспроизведения в localStorage
-    isAutoplayEnabled = localStorage.getItem('autoplayEnabled') === 'true';
-
-    // Обновляем состояние кнопки автовоспроизведения
-    const autoplayButton = document.querySelector('.setting');
-    if (autoplayButton) {
-        autoplayButton.classList.toggle('setting_active', isAutoplayEnabled);
-    }
-});
-
-// Функция для смены серии
-function changeEpisode(episode) {
-    currentEpisode = parseInt(episode, 10);
-    if (isNaN(currentEpisode)) {
-        console.error("Invalid episode value:", episode);
+// Нет HLS на сервере → демо-ролик и понятное сообщение вместо технической ошибки
+player.on('error', () => {
+    if (usingDemo) {
+        showStatus('Не удалось загрузить видео. Проверьте соединение и попробуйте ещё раз.');
         return;
     }
+    usingDemo = true;
+    player.error(null);
+    player.src(DEMO_SOURCE);
+    showStatus(`Демо-режим: серия ${currentEpisode} ещё не загружена на сервер, показан пример.`);
+    setTimeout(() => { if (usingDemo && !player.error()) ui.status.hidden = true; }, 5000);
+});
 
-    // Сбрасываем время воспроизведения на 0 перед загрузкой нового источника
-    player.currentTime(0);
+player.on('waiting', () => ui.box.classList.add('is-loading'));
+['playing', 'canplay', 'error'].forEach(e => player.on(e, () => ui.box.classList.remove('is-loading')));
 
+// ---------- Серии, качество, озвучка ----------
+
+function changeEpisode(episode) {
+    const next = parseInt(episode, 10);
+    if (isNaN(next) || next < 1 || next > EPISODE_COUNT) return;
+    currentEpisode = next;
     setVideoSource();
 
-    const episodeElement = document.querySelector(`${SELECTORS.EPISODE}[data-episode="${episode}"]`);
-    if (episodeElement) {
-        document.querySelectorAll(SELECTORS.EPISODE).forEach(e => e.classList.remove("episode_active"));
-        episodeElement.classList.add("episode_active");
-    } else {
-        console.error("Episode element not found for episode:", episode);
-    }
-
-    // Обновляем состояние кнопок
-    const playBtn = document.querySelector(SELECTORS.PLAYER_PLAY);
-    const stopBtn = document.querySelector(SELECTORS.PLAYER_STOP);
-
-    if (player.paused()) {
-        playBtn.style.display = 'block';
-        stopBtn.style.display = 'none';
-    } else {
-        playBtn.style.display = 'none';
-        stopBtn.style.display = 'block';
-    }
+    $$('.episode').forEach(btn => {
+        const active = Number(btn.dataset.episode) === currentEpisode;
+        btn.classList.toggle('episode_active', active);
+        if (active) {
+            btn.setAttribute('aria-current', 'true');
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+            btn.removeAttribute('aria-current');
+        }
+    });
 }
 
-// Функция для смены качества
 function changeQuality(quality) {
     currentQuality = quality;
-    setVideoSource();
-
-    document.querySelectorAll(SELECTORS.QUALITY).forEach(q => q.classList.remove("quality-active"));
-    const qualityElement = document.querySelector(`${SELECTORS.QUALITY}[data-quality="${quality}"]`);
-    if (qualityElement) {
-        qualityElement.classList.add("quality-active");
-    } else {
-        console.error("Quality element not found for quality:", quality);
-    }
-
-    const qualityMenu = document.querySelector(SELECTORS.QUALITY_MENU);
-    if (qualityMenu) {
-        qualityMenu.style.display = "none";
-    } else {
-        console.error("Quality menu not found");
-    }
+    setVideoSource({ keepTime: true });
+    $$('.quality').forEach(btn => {
+        const active = btn.dataset.quality === quality;
+        btn.classList.toggle('quality-active', active);
+        btn.setAttribute('aria-checked', String(active));
+    });
+    toggleQualityMenu(false);
 }
 
-// Функция для смены озвучки
 function changeVoice(voice) {
     currentVoice = voice;
-    setVideoSource();
-
-    document.querySelectorAll(SELECTORS.VOICE).forEach(v => v.classList.remove("voice_active"));
-    const voiceElement = document.querySelector(`${SELECTORS.VOICE}[data-voice="${voice}"]`);
-    if (voiceElement) {
-        voiceElement.classList.add("voice_active");
-    } else {
-        console.error("Voice element not found for voice:", voice);
-    }
-
-    // Обновляем состояние кнопок
-    const playBtn = document.querySelector(SELECTORS.PLAYER_PLAY);
-    const stopBtn = document.querySelector(SELECTORS.PLAYER_STOP);
-
-    if (player.paused()) {
-        playBtn.style.display = 'block';
-        stopBtn.style.display = 'none';
-    } else {
-        playBtn.style.display = 'none';
-        stopBtn.style.display = 'block';
-    }
+    setVideoSource({ keepTime: true });
+    $$('.voice').forEach(btn => {
+        const active = btn.dataset.voice === voice;
+        btn.classList.toggle('voice_active', active);
+        btn.setAttribute('aria-pressed', String(active));
+    });
 }
 
-// Обработчики для кнопок серий, качества и озвучки
-document.querySelectorAll(SELECTORS.EPISODE).forEach(episodeBtn => {
-    episodeBtn.addEventListener("click", event => {
-        const episode = event.target.dataset.episode;
-        if (episode) changeEpisode(episode);
-    });
+// Делегирование: один обработчик на кнопку (раньше срабатывали onclick + addEventListener)
+document.addEventListener('click', event => {
+    const episodeBtn = event.target.closest('[data-episode]');
+    if (episodeBtn) {
+        changeEpisode(episodeBtn.dataset.episode);
+        if (episodeBtn.classList.contains('coutinue_button')) {
+            ui.box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+    }
+    const qualityBtn = event.target.closest('[data-quality]');
+    if (qualityBtn) return changeQuality(qualityBtn.dataset.quality);
+    const voiceBtn = event.target.closest('[data-voice]');
+    if (voiceBtn) return changeVoice(voiceBtn.dataset.voice);
 });
 
-document.querySelectorAll(SELECTORS.QUALITY).forEach(qualityBtn => {
-    qualityBtn.addEventListener("click", event => {
-        const quality = event.target.dataset.quality;
-        if (quality) changeQuality(quality);
-    });
-});
+// ---------- Воспроизведение ----------
 
-document.querySelectorAll(SELECTORS.VOICE).forEach(voiceBtn => {
-    voiceBtn.addEventListener("click", event => {
-        const voice = event.target.dataset.voice;
-        if (voice) changeVoice(voice);
-    });
-});
-
-// Устанавливаем начальный источник видео
-setVideoSource();
-
-// Функция для переключения воспроизведения
 function togglePlay() {
-    const playBtn = document.querySelector(SELECTORS.PLAYER_PLAY);
-    const stopBtn = document.querySelector(SELECTORS.PLAYER_STOP);
-
-    if (player.paused()) {
-        player.play();
-        playBtn.style.display = 'none';
-        stopBtn.style.display = 'block';
-    } else {
-        player.pause();
-        playBtn.style.display = 'block';
-        stopBtn.style.display = 'none';
-    }
+    if (player.paused()) player.play(); else player.pause();
 }
 
-// Получаем элемент видео
-const videoElement = document.querySelector(SELECTORS.VIDEO_CONTAINER);
-
-// Добавляем обработчик события click
-videoElement.addEventListener('click', () => {
-    togglePlay();
-});
+ui.play.addEventListener('click', togglePlay);
+ui.pause.addEventListener('click', togglePlay);
+player.on('play', syncPlayButtons);
+player.on('pause', syncPlayButtons);
+player.on('click', togglePlay);
 
 player.on('ended', () => {
-    const playBtn = document.querySelector(SELECTORS.PLAYER_PLAY);
-    const stopBtn = document.querySelector(SELECTORS.PLAYER_STOP);
-
-    if (playBtn && stopBtn) {
-        playBtn.style.display = 'block';
-        stopBtn.style.display = 'none';
-    }
-
-    // Проверяем, включено ли автовоспроизведение
-    if (isAutoplayEnabled) {
-        playNextEpisode();
+    syncPlayButtons();
+    markWatched(currentEpisode);
+    if (isAutoplayEnabled && currentEpisode < EPISODE_COUNT) {
+        changeEpisode(currentEpisode + 1);
+        player.one('loadedmetadata', () => player.play());
     }
 });
 
-// Обработчики для прогресс-бара
-const progressContainer = document.querySelector(SELECTORS.PROGRESS_CONTAINER);
-const progressBar = document.querySelector(SELECTORS.PROGRESS_BAR);
-let isDragging = false;
+// ---------- Перемотка (мышь, палец, клавиатура) ----------
 
-function seek(event) {
-    const rect = progressContainer.getBoundingClientRect();
-    const percent = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
-    player.currentTime(percent * player.duration());
+function seekTo(clientX) {
+    const rect = ui.seek.getBoundingClientRect();
+    const percent = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+    if (isFinite(player.duration())) player.currentTime(percent * player.duration());
 }
 
-progressContainer.addEventListener('mousedown', event => { isDragging = true; seek(event); });
-document.addEventListener('mousemove', event => { if (isDragging) seek(event); });
-document.addEventListener('mouseup', () => { isDragging = false; });
+ui.seek.addEventListener('pointerdown', event => {
+    ui.seek.setPointerCapture(event.pointerId);
+    seekTo(event.clientX);
+});
+ui.seek.addEventListener('pointermove', event => {
+    if (ui.seek.hasPointerCapture(event.pointerId)) seekTo(event.clientX);
+});
+ui.seek.addEventListener('keydown', event => {
+    const step = { ArrowLeft: -5, ArrowRight: 5, PageDown: -30, PageUp: 30 }[event.key];
+    if (step) {
+        event.preventDefault();
+        event.stopPropagation();
+        player.currentTime(player.currentTime() + step);
+    }
+});
 
 player.on('timeupdate', () => {
-    progressBar.style.width = (player.currentTime() / player.duration()) * 100 + '%';
+    const duration = player.duration();
+    const current = player.currentTime();
+    const percent = duration ? (current / duration) * 100 : 0;
+    ui.seekBar.style.width = percent + '%';
+    ui.seek.setAttribute('aria-valuenow', Math.round(percent));
+    ui.seek.setAttribute('aria-valuetext', `${formatTime(current)} из ${formatTime(duration)}`);
+    ui.time.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+
+    // Серия считается просмотренной после 25 %
+    if (duration && current >= duration * 0.25) markWatched(currentEpisode);
 });
 
-// Обработчики для управления громкостью
-document.addEventListener("DOMContentLoaded", () => {
-    const volumeContainer = document.querySelector(SELECTORS.VOLUME_CONTAINER);
-    const volumeSlider = document.querySelector(SELECTORS.VOLUME_SLIDER);
-    const thumb = document.querySelector(SELECTORS.VOLUME_THUMB);
-    let isDragging = false;
-
-    volumeSlider.addEventListener("click", event => {
-        updateVolume((volumeSlider.getBoundingClientRect().bottom - event.clientY) / volumeSlider.clientHeight);
-    });
-
-    thumb.addEventListener("mousedown", event => { isDragging = true; event.preventDefault(); });
-    document.addEventListener("mousemove", event => { if (isDragging) updateVolume((volumeSlider.getBoundingClientRect().bottom - event.clientY) / volumeSlider.clientHeight); });
-    document.addEventListener("mouseup", () => { isDragging = false; });
-
-    volumeContainer.addEventListener("wheel", event => {
-        event.preventDefault();
-        updateVolume(volumeLevel + (event.deltaY > 0 ? -0.05 : 0.05));
-    });
-
-    volumeContainer.addEventListener("mouseenter", () => { volumeSlider.style.display = "block"; });
-    volumeContainer.addEventListener("mouseleave", event => {
-        if (!volumeSlider.contains(event.relatedTarget)) volumeSlider.style.display = "none";
-    });
-});
-
-// Функция для переключения меню качества
-function toggleQualityMenu() {
-    const menu = document.querySelector(SELECTORS.QUALITY_MENU);
-    if (menu) menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
-
-// Функция для переключения полноэкранного режима
-function toggleFullScreen() {
-    const playerBox = document.querySelector(SELECTORS.PLAYER_BOX);
-    if (!document.fullscreenElement) {
-        playerBox.requestFullscreen();
-    } else {
-        document.exitFullscreen();
-    }
-}
-
-document.addEventListener("fullscreenchange", () => {
-    const playerBox = document.querySelector(SELECTORS.PLAYER_BOX);
-    const video = document.querySelector(`${SELECTORS.PLAYER_BOX} video`);
-
-    if (document.fullscreenElement === playerBox) {
-        video.style.width = "100vw";
-        video.style.height = "100vh";
-        video.style.objectFit = "cover";
-    } else {
-        video.style.width = "";
-        video.style.height = "";
-        video.style.objectFit = "";
-    }
-});
+// ---------- Громкость ----------
 
 function updateVolume(level) {
-    volumeLevel = Math.max(0, Math.min(1, level)); // Ограничиваем уровень громкости от 0 до 1
-    const fill = document.querySelector(SELECTORS.VOLUME_FILL);
-    const thumb = document.querySelector(SELECTORS.VOLUME_THUMB);
-
-    if (fill && thumb) {
-        fill.style.height = thumb.style.bottom = `${volumeLevel * 100}%`;
-        player.volume(volumeLevel); // Устанавливаем громкость для плеера
-    }
+    volumeLevel = Math.max(0, Math.min(1, level));
+    ui.volumeFill.style.height = ui.volumeThumb.style.bottom = `${volumeLevel * 100}%`;
+    ui.volumeSlider.setAttribute('aria-valuenow', Math.round(volumeLevel * 100));
+    player.volume(volumeLevel);
+    player.muted(volumeLevel === 0);
 }
 
-// Флаг для отслеживания состояния клавиши пробела
-let isSpaceKeyPressed = false;
+function toggleVolumeSlider(force) {
+    const open = typeof force === 'boolean' ? force : ui.volumeSlider.hidden;
+    ui.volumeSlider.hidden = !open;
+    ui.volumeBtn.setAttribute('aria-expanded', String(open));
+}
 
-// Обработчики для горячих клавиш
-document.addEventListener("keydown", event => {
-    if (["INPUT", "TEXTAREA"].includes(event.target.tagName)) return;
+function volumeFromPointer(event) {
+    const rect = ui.volumeSlider.getBoundingClientRect();
+    updateVolume((rect.bottom - event.clientY) / rect.height);
+}
+
+ui.volumeBtn.addEventListener('click', () => toggleVolumeSlider());
+ui.volumeSlider.addEventListener('pointerdown', event => {
+    ui.volumeSlider.setPointerCapture(event.pointerId);
+    volumeFromPointer(event);
+});
+ui.volumeSlider.addEventListener('pointermove', event => {
+    if (ui.volumeSlider.hasPointerCapture(event.pointerId)) volumeFromPointer(event);
+});
+ui.volumeSlider.addEventListener('keydown', event => {
+    const step = { ArrowUp: 0.05, ArrowRight: 0.05, ArrowDown: -0.05, ArrowLeft: -0.05 }[event.key];
+    if (step) {
+        event.preventDefault();
+        event.stopPropagation();
+        updateVolume(volumeLevel + step);
+    }
+});
+$('.volue_adj').addEventListener('wheel', event => {
+    event.preventDefault();
+    updateVolume(volumeLevel + (event.deltaY > 0 ? -0.05 : 0.05));
+}, { passive: false });
+
+// Мышью — как раньше, по наведению
+if (window.matchMedia('(hover: hover)').matches) {
+    $('.volue_adj').addEventListener('mouseenter', () => toggleVolumeSlider(true));
+    $('.volue_adj').addEventListener('mouseleave', () => toggleVolumeSlider(false));
+}
+
+// ---------- Качество ----------
+
+function toggleQualityMenu(force) {
+    const open = typeof force === 'boolean' ? force : ui.qualityMenu.hidden;
+    ui.qualityMenu.hidden = !open;
+    ui.qualityBtn.setAttribute('aria-expanded', String(open));
+    if (open) ui.qualityMenu.querySelector('.quality-active')?.focus();
+}
+
+ui.qualityBtn.addEventListener('click', () => toggleQualityMenu());
+
+// Закрытие всплывающих меню по клику вне и по Escape
+document.addEventListener('pointerdown', event => {
+    if (!event.target.closest('.quality_wrap')) toggleQualityMenu(false);
+    if (!event.target.closest('.volue_adj')) toggleVolumeSlider(false);
+});
+
+// ---------- Полноэкранный режим и PiP ----------
+
+function toggleFullScreen() {
+    if (document.fullscreenElement) return document.exitFullscreen();
+    if (ui.box.requestFullscreen) return ui.box.requestFullscreen();
+    // iOS Safari: полноэкранный режим только у самого video
+    const video = ui.box.querySelector('video');
+    if (video && video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+}
+
+$('#fullscreenBtn').addEventListener('click', toggleFullScreen);
+document.addEventListener('fullscreenchange', () => {
+    ui.box.classList.toggle('is-fullscreen', document.fullscreenElement === ui.box);
+});
+
+const pipBtn = $('#pipBtn');
+if (!document.pictureInPictureEnabled) {
+    pipBtn.hidden = true;
+} else {
+    pipBtn.addEventListener('click', () => {
+        const video = ui.box.querySelector('video');
+        if (document.pictureInPictureElement) return document.exitPictureInPicture();
+        if (video.readyState < 2) return showStatus('Видео ещё загружается…');
+        video.requestPictureInPicture().catch(() => showStatus('Не удалось включить «картинку в картинке».'));
+    });
+}
+
+// ---------- Горячие клавиши ----------
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+        toggleQualityMenu(false);
+        toggleVolumeSlider(false);
+        return;
+    }
+    // Не перехватываем клавиши в полях, кнопках и модалках
+    if (event.target.closest('input, textarea, select, button, a, [role="slider"], dialog')) return;
 
     const keyActions = {
-        "Space": () => {
-            if (!isSpaceKeyPressed) { // Проверяем, не нажат ли уже пробел
-                togglePlay();
-                isSpaceKeyPressed = true; // Устанавливаем флаг, что пробел нажат
-            }
-        },
-        "ArrowLeft": () => player.currentTime(player.currentTime() - 5),
-        "ArrowRight": () => player.currentTime(player.currentTime() + 5),
-        "ArrowUp": () => updateVolume(volumeLevel + 0.05),
-        "ArrowDown": () => updateVolume(volumeLevel - 0.05),
-        "KeyF": () => toggleFullScreen(),
-        "KeyM": () => player.muted(!player.muted())
+        Space: togglePlay,
+        KeyK: togglePlay,
+        ArrowLeft: () => player.currentTime(player.currentTime() - 5),
+        ArrowRight: () => player.currentTime(player.currentTime() + 5),
+        ArrowUp: () => updateVolume(volumeLevel + 0.05),
+        ArrowDown: () => updateVolume(volumeLevel - 0.05),
+        KeyF: toggleFullScreen,
+        KeyM: () => player.muted(!player.muted())
     };
 
-    if (keyActions[event.code]) {
+    if (keyActions[event.code] && !event.repeat) {
         event.preventDefault();
         keyActions[event.code]();
     }
 });
 
-// Сбрасываем флаг, когда клавиша пробела отпущена
-document.addEventListener("keyup", event => {
-    if (event.code === "Space") {
-        isSpaceKeyPressed = false; // Сбрасываем флаг
+// ---------- Автоскрытие контролов (только над плеером) ----------
+
+let hideTimer;
+
+function showControls() {
+    ui.box.classList.remove('controls-hidden');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+        if (!player.paused() && !ui.box.contains(document.activeElement)) ui.box.classList.add('controls-hidden');
+    }, 3000);
+}
+
+['pointermove', 'pointerdown', 'focusin'].forEach(e => ui.box.addEventListener(e, showControls));
+player.on('pause', showControls);
+player.on('play', showControls);
+
+// ---------- Автовоспроизведение ----------
+
+function renderAutoplay() {
+    ui.autoplay.classList.toggle('setting_active', isAutoplayEnabled);
+    ui.autoplay.setAttribute('aria-pressed', String(isAutoplayEnabled));
+}
+
+ui.autoplay.addEventListener('click', () => {
+    isAutoplayEnabled = !isAutoplayEnabled;
+    storage.set('autoplayEnabled', isAutoplayEnabled);
+    renderAutoplay();
+});
+
+// ---------- Поиск серии ----------
+
+$('#searchSeriesForm').addEventListener('submit', event => {
+    event.preventDefault();
+    const n = parseInt(ui.search.value, 10);
+    if (n >= 1 && n <= EPISODE_COUNT) {
+        changeEpisode(n);
+        ui.search.value = '';
+    } else if (window.showToast) {
+        window.showToast(`Серии с номером «${ui.search.value}» нет`);
     }
 });
 
-// Функция для переключения Picture-in-Picture
-function togglePiP() {
-    const video = document.querySelector('video');
-
-    if (!video) {
-        console.error("Видео не найдено!");
-        return;
-    }
-
-    if (!document.pictureInPictureEnabled) {
-        console.error("Ваш браузер не поддерживает Picture-in-Picture.");
-        return;
-    }
-
-    if (video.readyState < 2) {
-        console.error("Видео ещё не загружено.");
-        return;
-    }
-
-    if (!document.pictureInPictureElement) {
-        video.requestPictureInPicture().catch(error => {
-            console.error("Ошибка включения PiP:", error);
-        });
-    } else {
-        document.exitPictureInPicture();
-    }
-}
-
-// Управление видимостью курсора и контролов
-let timeout;
-const playerBlock = document.querySelector(SELECTORS.PLAYER_BLOCK);
-const customControls = document.querySelector(SELECTORS.CUSTOM_CONTROLS);
-const videoContainer = document.querySelector(SELECTORS.VIDEO_CONTAINER);
-
-function hideCursorAndControls() {
-    document.body.style.cursor = 'none';
-    customControls.style.opacity = '0';
-    customControls.style.visibility = 'hidden';
-}
-
-function showCursorAndControls() {
-    document.body.style.cursor = 'default';
-    customControls.style.opacity = '1';
-    customControls.style.visibility = 'visible';
-    resetTimer();
-}
-
-function resetTimer() {
-    clearTimeout(timeout);
-    timeout = setTimeout(hideCursorAndControls, 3000);
-}
-
-document.addEventListener('mousemove', showCursorAndControls);
-document.addEventListener('keydown', showCursorAndControls);
-document.addEventListener('click', showCursorAndControls);
-
-document.addEventListener('mouseleave', hideCursorAndControls);
-videoContainer.addEventListener('play', resetTimer);
-videoContainer.addEventListener('pause', showCursorAndControls);
-
-resetTimer();
-
-// Функция для поиска серии
-function searchEpisode() {
-    const searchInput = document.querySelector('.search_series_block input');
-    const episodeButtons = document.querySelectorAll('.episode');
-
-    searchInput.addEventListener('input', function() {
-        const searchValue = this.value.trim();
-
-        // Сбрасываем выделение всех серий
-        episodeButtons.forEach(button => {
-            button.classList.remove('episode_active');
-        });
-
-        // Если поле поиска не пустое, ищем серию
-        if (searchValue !== '') {
-            const foundEpisode = Array.from(episodeButtons).find(button => {
-                return button.textContent.trim() === searchValue;
-            });
-
-            // Если серия найдена, выделяем её
-            if (foundEpisode) {
-                foundEpisode.classList.add('episode_active');
-                foundEpisode.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        } else {
-            // Если поле поиска пустое, выделяем текущую серию
-            const currentEpisodeButton = document.querySelector(`.episode[data-episode="${currentEpisode}"]`);
-            if (currentEpisodeButton) {
-                currentEpisodeButton.classList.add('episode_active');
-                currentEpisodeButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-    });
-}
-
-// Вызываем функцию поиска при загрузке страницы
-document.addEventListener("DOMContentLoaded", () => {
-    searchEpisode();
+// Подсветка по мере ввода (как раньше), без смены серии
+ui.search.addEventListener('input', () => {
+    const value = ui.search.value.trim();
+    $$('.episode').forEach(btn => btn.classList.toggle('episode_found', value !== '' && btn.dataset.episode === value));
+    const found = $('.episode_found');
+    if (found) found.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const episodeContainer = document.getElementById('episodeContainer');
-    const prevButton = document.getElementById('prevSeries');
-    const nextButton = document.getElementById('nextSeries');
-    const episodeBlock = document.getElementById('episodeBlock');
-    const episodeWidth = 45 + 10; // Ширина эпизода + margin-right
-    const visibleEpisodes = Math.floor(episodeBlock.offsetWidth / episodeWidth);
-    let scrollPosition = 0;
+// ---------- Листание списка серий ----------
 
-    prevButton.addEventListener('click', function() {
-        scrollPosition = Math.max(scrollPosition - episodeWidth * visibleEpisodes, 0);
-        episodeContainer.style.transform = `translateX(-${scrollPosition}px)`;
-    });
-
-    nextButton.addEventListener('click', function() {
-        const maxScroll = episodeContainer.scrollWidth - episodeBlock.offsetWidth;
-        scrollPosition = Math.min(scrollPosition + episodeWidth * visibleEpisodes, maxScroll);
-        episodeContainer.style.transform = `translateX(-${scrollPosition}px)`;
-    });
-});
-
-
-// Функция для отправки данных на сервер
-function sendWatchedEpisodeToServer(episodeData) {
-    const url = 'https://ваш-сервер.com/api/watched-episodes'; // Замените на ваш URL
-    const options = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(episodeData) // Отправляем данные в формате JSON
-    };
-
-    fetch(url, options)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Ошибка сети или сервера');
-            }
-            return response.json(); // Парсим JSON-ответ
-        })
-        .then(data => {
-            console.log('Данные успешно отправлены на сервер:', data);
-        })
-        .catch(error => {
-            console.error('Ошибка при отправке данных:', error);
-        });
+function scrollEpisodes(direction) {
+    ui.episodeBlock.scrollBy({ left: direction * ui.episodeBlock.clientWidth * 0.8, behavior: 'smooth' });
 }
 
-// Функция для проверки, просмотрено ли 25% серии
-function checkIfEpisodeWatched() {
-    const duration = player.duration(); // Общая продолжительность видео
-    const currentTime = player.currentTime(); // Текущее время воспроизведения
+$('#prevSeries').addEventListener('click', () => scrollEpisodes(-1));
+$('#nextSeries').addEventListener('click', () => scrollEpisodes(1));
 
-    // Проверяем, просмотрено ли 25% или более
-    if (currentTime >= duration * 0.01) {
-        // Формируем объект для записи
-        const episodeData = {
-            name: formattedAnimeName,
-            voice: currentVoice,
-            episode: currentEpisode
-        };
+// ---------- Прогресс просмотра (localStorage, до появления API) ----------
 
-        // Получаем массив завершенных серий из localStorage
-        let watchedEpisodes = JSON.parse(localStorage.getItem('watchedEpisodes')) || [];
+function watchedKey() {
+    return `watched:${animeName}`;
+}
 
-        // Проверяем, есть ли уже такая запись в массиве
-        const isAlreadyWatched = watchedEpisodes.some(episode =>
-            episode.name === episodeData.name &&
-            episode.voice === episodeData.voice &&
-            episode.episode === episodeData.episode
-        );
-
-        if (!isAlreadyWatched) {
-            // Добавляем запись в массив
-            watchedEpisodes.push(episodeData);
-
-            // Сохраняем обновленный массив в localStorage
-            localStorage.setItem('watchedEpisodes', JSON.stringify(watchedEpisodes));
-
-            // Отправляем данные на сервер
-            sendWatchedEpisodeToServer(episodeData);
-
-            // Показываем уведомление
-            alert(`Серия "${episodeData.name} ${episodeData.voice} ${episodeData.episode}" завершена на 25% и добавлена в список просмотренных!`);
-            console.log(`Серия "${episodeData.name} ${episodeData.voice} ${episodeData.episode}" завершена на 25% и добавлена в список просмотренных.`);
-        }
-
-        // Убираем обработчик, чтобы уведомление не показывалось повторно
-        player.off('timeupdate', checkIfEpisodeWatched);
+function markWatched(episode) {
+    const watched = storage.get(watchedKey(), []);
+    if (!watched.includes(episode)) {
+        watched.push(episode);
+        storage.set(watchedKey(), watched);
+        renderProgress();
     }
 }
 
-// Добавляем обработчик события timeupdate
-player.on('timeupdate', checkIfEpisodeWatched);
+function renderProgress() {
+    const watched = storage.get(watchedKey(), []);
+    $$('.episode').forEach(btn => btn.classList.toggle('episode_watched', watched.includes(Number(btn.dataset.episode))));
+    const bar = $('.viewing_progress .progress-bar');
+    $('#seasonProgress').style.width = `${(watched.length / EPISODE_COUNT) * 100}%`;
+    bar.setAttribute('aria-valuenow', watched.length);
+    bar.setAttribute('aria-valuemax', EPISODE_COUNT);
+    $('#seasonProgressText').textContent = `${watched.length} из ${EPISODE_COUNT}`;
+}
 
-// При загрузке страницы восстанавливаем массив из localStorage
-document.addEventListener('DOMContentLoaded', () => {
-    const watchedEpisodes = JSON.parse(localStorage.getItem('watchedEpisodes')) || [];
-    console.log('Просмотренные серии:', watchedEpisodes);
-});
+// ---------- Старт ----------
+
+updateVolume(volumeLevel);
+renderAutoplay();
+renderProgress();
+syncPlayButtons();
+setVideoSource();

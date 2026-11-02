@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeBox</title>
+    <title>Вход — AnimeBox</title>
+    <meta name="description" content="Вход в AnimeBox.">
+    <link rel="icon" href="source/img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="source/css/auth/login.css">
 </head>
 <body>
-    <div class="load_box">
+    <div class="load_box" aria-hidden="true">
         <div class="logo_bg">
             <img src="source/img/auth/logo_load.png" alt="">
         </div>
@@ -20,34 +22,37 @@
     <header>
         <div class="header">
             <div class="logo">
-                <img src="source/img/auth/logo.png" alt="">
+                <a href="welcome.html"><img src="source/img/auth/logo.png" alt="AnimeBox — на стартовую"></a>
             </div>
         </div>
     </header>
 
-    <main>
+    <main id="content">
 
         <section class="login">
-            <h2 class="title">Вход</h2>
-            <form action="" class="log">
-                <label for="">Никнейм</label>
+            <h1 class="title" id="formTitle">Вход</h1>
+            <form action="main.html" class="log auth-form" novalidate aria-labelledby="formTitle">
+                <label for="loginNick">Никнейм</label>
                 <div class="input-group">
                     <img class="nick_icon_log" src="source/img/auth/nicname.png" alt="">
-                    <input placeholder="Введите Никнейм" type="text">
+                    <input id="loginNick" name="nickname" placeholder="Введите никнейм" type="text" autocomplete="username" required minlength="3" aria-describedby="loginNickError">
                 </div>
-            
-                <label for="">Пароль</label>
+                <p class="field-error" id="loginNickError" aria-live="polite"></p>
+
+                <label for="loginPass">Пароль</label>
                 <div class="input-group">
                     <img class="password_icon_log" src="source/img/auth/password.png" alt="">
-                    <input placeholder="Введите Пароль" type="password">
+                    <input id="loginPass" name="password" placeholder="Введите пароль" type="password" autocomplete="current-password" required minlength="6" aria-describedby="loginPassError">
+                    <button type="button" class="toggle-pass" aria-pressed="false">показать</button>
                 </div>
-            
-                <button class="btn">Войти</button>
-                <span>Вы еще не с нами?<a href="register.html">Регистрация</a></span>
+                <p class="field-error" id="loginPassError" aria-live="polite"></p>
+
+                <button type="submit" class="btn">Войти</button>
+                <span>Вы ещё не с нами?<a href="register.html">Регистрация</a></span>
             </form>
         </section>
 
-        <section class="hero_log">
+        <section class="hero_log" aria-hidden="true">
             <div class="hero_one_log">
                 <img src="source/img/auth/hero1.png" alt="">
             </div>
@@ -59,7 +64,8 @@
 
     </main>
 
-    <section class="version">Beta version 0.0.1</section>
+    <footer class="version">Beta version 0.1.0</footer>
 
+<script src="source/js/auth.js"></script>
 </body>
 </html>

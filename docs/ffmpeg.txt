@@ -1,0 +1,1 @@
+ffmpeg -i 1080.mp4 -c:v libx264 -crf 23 -preset fast -g 15 -sc_threshold 0 -hls_time 0.5 -hls_list_size 0 -f hls output.m3u8
