@@ -1,0 +1,696 @@
+{
+  "index": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 780,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 780,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    }
+  },
+  "welcome": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 780,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 780,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    }
+  },
+  "login": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 780,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 6,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 780,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 6,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 915,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 6,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 955,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 6,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 14,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 955,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 6,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 14,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    }
+  },
+  "register": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 897,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 9,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 897,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 9,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 929,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 9,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 13,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 937,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 9,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 14,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 937,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 9,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 14,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    }
+  },
+  "main": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 1426,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 10,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 1452,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 10,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 1251,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 11,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 11,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 900,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 11,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    }
+  },
+  "anime": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 1766,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 13,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 1705,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 13,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 1298,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 14,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 1264,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 14,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 1297,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 14,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    }
+  },
+  "profile": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 2610,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [
+        "button.btn-outline.swape_profile_button (557px)"
+      ],
+      "interactiveCount": 19,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 2671,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [
+        "button.btn-outline.swape_profile_button (557px)"
+      ],
+      "interactiveCount": 19,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 2105,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 20,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 2211,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 20,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 1032,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 20,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 11,
+      "errors": [],
+      "failed": [],
+      "axe": []
+    }
+  },
+  "player": {
+    "360": {
+      "scrollWidth": 360,
+      "horizontalOverflow": false,
+      "contentHeight": 1684,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [
+        "li (384px)",
+        "button.episode (384px)",
+        "li (438px)",
+        "button.episode (438px)",
+        "li (492px)",
+        "button.episode (492px)",
+        "li (546px)",
+        "button.episode (546px)"
+      ],
+      "interactiveCount": 50,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "404 /source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8"
+      ],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "contentHeight": 1564,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [
+        "li (438px)",
+        "button.episode (438px)",
+        "li (492px)",
+        "button.episode (492px)",
+        "li (546px)",
+        "button.episode (546px)",
+        "li (600px)",
+        "button.episode (600px)"
+      ],
+      "interactiveCount": 50,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "404 /source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8"
+      ],
+      "axe": []
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 1431,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [
+        "li (812px)",
+        "button.episode (812px)",
+        "li (866px)",
+        "button.episode (866px)",
+        "li (920px)",
+        "button.episode (920px)",
+        "li (974px)",
+        "button.episode (974px)"
+      ],
+      "interactiveCount": 52,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 600×36"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "404 /source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8"
+      ],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 1575,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [
+        "li (1028px)",
+        "button.episode (1028px)",
+        "li (1082px)",
+        "button.episode (1082px)",
+        "li (1136px)",
+        "button.episode (1136px)",
+        "li (1190px)",
+        "button.episode (1190px)"
+      ],
+      "interactiveCount": 52,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 600×36"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "404 /source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8"
+      ],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 911,
+      "bodyOverflowHidden": false,
+      "clippedVertically": false,
+      "overflowing": [
+        "li (1460px)",
+        "button.episode (1460px)",
+        "li (1514px)",
+        "button.episode (1514px)",
+        "li (1568px)",
+        "button.episode (1568px)"
+      ],
+      "interactiveCount": 52,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 600×36"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "404 /source/server/anime/kimetsu_no_yaiba/Anilibria/1/1080/output.m3u8"
+      ],
+      "axe": []
+    }
+  }
+}

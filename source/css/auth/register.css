@@ -3,9 +3,19 @@
     margin: 0;
 }
 
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
 body{
-    max-height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+:focus-visible{
+    outline: 3px solid #212121;
+    outline-offset: 3px;
 }
 
 .version{
@@ -224,4 +234,177 @@ label{
     left:392px;
     z-index: 1;
 
+}
+
+/* ---------- Адаптив и состояния ---------- */
+
+.load_box{
+    pointer-events: none;
+}
+
+.header{
+    width: 100%;
+    max-width: 1748px;
+    min-height: 80px;
+    padding: 0 16px;
+}
+
+.logo img{
+    max-width: 200px;
+    height: auto;
+}
+
+.register{
+    position: relative;
+    z-index: 2;
+    height: auto;
+    min-height: calc(100vh - 120px);
+    padding: 16px 16px 72px;
+}
+
+.title{
+    font-size: clamp(36px, 9vw, 50px);
+    margin-bottom: 28px;
+}
+
+.reg{
+    width: min(540px, 100%);
+}
+
+label{
+    font-size: 19px;
+    margin-bottom: 6px;
+}
+
+.input-group input{
+    font-size: 20px;
+    padding-right: 96px;
+}
+
+.input-group input:focus-visible{
+    outline: none;
+    border-bottom-width: 5px;
+}
+
+.input-group input[aria-invalid="true"]{
+    border-bottom-color: #c62828;
+}
+
+.field-error{
+    font-family: "Comfortaa", sans-serif;
+    font-size: 15px;
+    color: #c62828;
+    min-height: 20px;
+    margin-bottom: 10px;
+}
+
+.toggle-pass{
+    position: absolute;
+    right: 0;
+    top: 2px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 8px;
+    border: none;
+    background: none;
+    font-family: "Comfortaa", sans-serif;
+    font-size: 14px;
+    color: #212121;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn{
+    width: 100%;
+    height: 60px;
+    margin-top: 8px;
+}
+
+.btn:disabled{
+    opacity: .6;
+    cursor: progress;
+}
+
+.reg span{
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.reg span a{
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    padding: 12px 0;
+}
+
+.hero_reg img,
+.hero_one_reg,
+.hero_two_reg{
+    pointer-events: none;
+}
+
+@media (max-width: 1023px){
+    .register{
+        margin: 0 auto;
+        align-items: center;
+    }
+    .hero_reg{
+        display: none;
+    }
+    .version{
+        right: 16px;
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .load_box{ display: none; }
+}
+
+.logo a{
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+}
+
+/* Десктоп: форма и арт в две колонки, арт не перекрывает поля */
+@media (min-width: 1024px){
+    main{
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        align-items: center;
+    }
+    .register{
+        margin: 0;
+        min-height: calc(100vh - 120px);
+        justify-content: center;
+        align-items: center;
+    }
+    .hero_reg{
+        position: relative;
+        align-self: stretch;
+        min-height: calc(100vh - 80px);
+        overflow: hidden;
+    }
+    .hero_reg{ order: -1; }
+    .hero_one_reg,
+    .hero_two_reg{
+        position: absolute;
+        bottom: -40px;
+        left: auto;
+        right: auto;
+    }
+    .hero_one_reg{ left: 8%; }
+    .hero_two_reg{ left: 42%; }
+    .hero_one_reg img,
+    .hero_two_reg img{
+        height: min(90vh, 995px);
+        width: auto;
+    }
+}
+
+.version{
+    z-index: 5;
+    padding: 2px 6px;
+    background: #fff;
+    border-radius: 3px;
 }

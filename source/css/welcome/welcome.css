@@ -3,9 +3,19 @@
     margin: 0;
 }
 
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
 body{
-    max-height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #fff;
+}
+
+:focus-visible{
+    outline: 3px solid #212121;
+    outline-offset: 3px;
 }
 
 a{
@@ -99,4 +109,77 @@ a{
     position: absolute;
     bottom: -51px;
     right: 157px;
+}
+
+/* ---------- Адаптив ---------- */
+
+.welcome{
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    height: auto;
+    padding: 24px 16px 120px;
+    text-align: center;
+}
+
+.logo img{
+    max-width: min(420px, 80vw);
+    height: auto;
+}
+
+.start{
+    width: min(341px, 100%);
+    min-height: 56px;
+    height: auto;
+}
+
+.hero{
+    position: fixed;
+    inset: auto 0 0 0;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.hero img{
+    display: block;
+    height: auto;
+}
+
+@media (max-width: 1199px){
+    .hero_one img,
+    .hero_two img{
+        width: 30vw;
+    }
+    .hero_one{ left: 2vw; bottom: -6vw; }
+    .hero_two{ right: 2vw; bottom: -4vw; }
+}
+
+@media (max-width: 767px){
+    .logo{
+        margin-left: 0;
+    }
+    .hero{
+        opacity: .12;
+    }
+    .hero_one img,
+    .hero_two img{
+        width: 55vw;
+    }
+    .version{
+        right: 16px;
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{ transition: none !important; animation: none !important; }
+}
+
+.version{
+    z-index: 5;
+    padding: 2px 6px;
+    background: #fff;
+    border-radius: 3px;
 }

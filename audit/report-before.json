@@ -1,0 +1,1084 @@
+{
+  "index": {
+    "360": {
+      "missing": true,
+      "status": 404
+    },
+    "390": {
+      "missing": true,
+      "status": 404
+    },
+    "768": {
+      "missing": true,
+      "status": 404
+    },
+    "1024": {
+      "missing": true,
+      "status": 404
+    },
+    "1440": {
+      "missing": true,
+      "status": 404
+    }
+  },
+  "welcome": {
+    "360": {
+      "scrollWidth": 609,
+      "horizontalOverflow": false,
+      "contentHeight": 1320,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 609,
+      "horizontalOverflow": false,
+      "contentHeight": 1218,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "All page content should be contained by landmarks"
+        }
+      ]
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 985,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 985,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 985,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 1,
+      "smallTargets": 0,
+      "smallTargetSamples": [],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "All page content should be contained by landmarks"
+        }
+      ]
+    }
+  },
+  "login": {
+    "360": {
+      "scrollWidth": 735,
+      "horizontalOverflow": false,
+      "contentHeight": 1593,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 4,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 146×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 735,
+      "horizontalOverflow": false,
+      "contentHeight": 1470,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 4,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 146×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "All page content should be contained by landmarks"
+        }
+      ]
+    },
+    "768": {
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "contentHeight": 968,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 4,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 146×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 968,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 4,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 146×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 968,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 4,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 146×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "All page content should be contained by landmarks"
+        }
+      ]
+    }
+  },
+  "register": {
+    "360": {
+      "scrollWidth": 857,
+      "horizontalOverflow": false,
+      "contentHeight": 1857,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.load_bg (943px)"
+      ],
+      "interactiveCount": 6,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 73×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 857,
+      "horizontalOverflow": false,
+      "contentHeight": 1714,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [],
+      "interactiveCount": 6,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 73×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "All page content should be contained by landmarks"
+        }
+      ]
+    },
+    "768": {
+      "scrollWidth": 857,
+      "horizontalOverflow": true,
+      "contentHeight": 968,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.logo_bg (1305px)",
+        "img (1305px)",
+        "div.load_bg (2010px)",
+        "div.hero_two_reg (857px)",
+        "img (857px)"
+      ],
+      "interactiveCount": 6,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 73×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "contentHeight": 968,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.logo_bg (1687px)",
+        "img (1687px)",
+        "div.load_bg (2680px)"
+      ],
+      "interactiveCount": 6,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 73×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "contentHeight": 968,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.logo_bg (2310px)",
+        "img (2310px)",
+        "div.load_bg (3771px)"
+      ],
+      "interactiveCount": 6,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "a. 73×23"
+      ],
+      "minFontPx": 15,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        },
+        {
+          "id": "region",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "All page content should be contained by landmarks"
+        }
+      ]
+    }
+  },
+  "main": {
+    "360": {
+      "scrollWidth": 1839,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "section.beta_block (1839px)",
+        "div.beta_stats (1779px)",
+        "h3 (1779px)",
+        "div.count_user (1741px)",
+        "span (1732px)"
+      ],
+      "interactiveCount": 9,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED /source/video/2.mp4",
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 1839,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "section.beta_block (1839px)",
+        "div.beta_stats (1779px)",
+        "h3 (1779px)",
+        "div.count_user (1741px)",
+        "span (1732px)"
+      ],
+      "interactiveCount": 9,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 1,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        }
+      ]
+    },
+    "768": {
+      "scrollWidth": 1839,
+      "horizontalOverflow": true,
+      "contentHeight": 936,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "section.beta_block (1839px)",
+        "div.beta_inf (1280px)",
+        "h3 (1115px)",
+        "p (1280px)",
+        "a (1282px)",
+        "div.beta_stats (1779px)",
+        "h3 (1779px)",
+        "div.count_user (1741px)"
+      ],
+      "interactiveCount": 9,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED /source/video/2.mp4",
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1839,
+      "horizontalOverflow": true,
+      "contentHeight": 936,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "section.beta_block (1839px)",
+        "div.beta_inf (1280px)",
+        "h3 (1115px)",
+        "p (1280px)",
+        "a (1282px)",
+        "div.beta_stats (1779px)",
+        "h3 (1779px)",
+        "div.count_user (1741px)"
+      ],
+      "interactiveCount": 9,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1839,
+      "horizontalOverflow": true,
+      "contentHeight": 918,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "section.beta_block (1839px)",
+        "div.beta_stats (1779px)",
+        "h3 (1779px)",
+        "div.count_user (1741px)",
+        "span (1732px)"
+      ],
+      "interactiveCount": 9,
+      "smallTargets": 1,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 1,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        }
+      ]
+    }
+  },
+  "anime": {
+    "360": {
+      "scrollWidth": 1851,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.header-block (1851px)"
+      ],
+      "interactiveCount": 11,
+      "smallTargets": 5,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32"
+      ],
+      "minFontPx": 10,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 1851,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.header-block (1851px)"
+      ],
+      "interactiveCount": 11,
+      "smallTargets": 5,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32"
+      ],
+      "minFontPx": 10,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 1,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Heading levels should only increase by one"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        }
+      ]
+    },
+    "768": {
+      "scrollWidth": 1851,
+      "horizontalOverflow": true,
+      "contentHeight": 981,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "div.header-block (1851px)",
+        "p.descr_anime (1187px)"
+      ],
+      "interactiveCount": 11,
+      "smallTargets": 5,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32"
+      ],
+      "minFontPx": 10,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1851,
+      "horizontalOverflow": true,
+      "contentHeight": 981,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "div.header-block (1851px)",
+        "p.descr_anime (1187px)"
+      ],
+      "interactiveCount": 11,
+      "smallTargets": 5,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32"
+      ],
+      "minFontPx": 10,
+      "errors": [],
+      "failed": [],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1851,
+      "horizontalOverflow": true,
+      "contentHeight": 932,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "div.header-block (1851px)"
+      ],
+      "interactiveCount": 11,
+      "smallTargets": 5,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32",
+        "button.button_viewing_timeline 149×32"
+      ],
+      "minFontPx": 10,
+      "errors": [],
+      "failed": [],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 1,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "heading-order",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Heading levels should only increase by one"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        }
+      ]
+    }
+  },
+  "profile": {
+    "360": {
+      "scrollWidth": 1844,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.bg (1844px)",
+        "div.stat_block (1844px)",
+        "div.lvl_progress (1844px)",
+        "div.level_container (1844px)",
+        "div.level (1844px)",
+        "div.amount_level (1842px)",
+        "span.amount_lvl (1663px)",
+        "span.lvl (1697px)"
+      ],
+      "interactiveCount": 16,
+      "smallTargets": 2,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "a.telegram_url 58×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 1844,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "div.bg (1844px)",
+        "div.stat_block (1844px)",
+        "div.lvl_progress (1844px)",
+        "div.level_container (1844px)",
+        "div.level (1844px)",
+        "div.amount_level (1842px)",
+        "span.amount_lvl (1663px)",
+        "span.lvl (1697px)"
+      ],
+      "interactiveCount": 16,
+      "smallTargets": 2,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "a.telegram_url 58×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 1,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        }
+      ]
+    },
+    "768": {
+      "scrollWidth": 1844,
+      "horizontalOverflow": true,
+      "contentHeight": 940,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "div.bg (1844px)",
+        "div.stat_block (1844px)",
+        "div.stat_block_container (1410px)",
+        "div.inf_block (1410px)",
+        "div.roles (1410px)",
+        "div.inf_panel (1410px)",
+        "div.panel_profile.panel_profile_stats (806px)",
+        "span.panel_profile_title (781px)"
+      ],
+      "interactiveCount": 16,
+      "smallTargets": 2,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "a.telegram_url 58×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": null
+    },
+    "1024": {
+      "missing": true
+    },
+    "1440": {
+      "scrollWidth": 1844,
+      "horizontalOverflow": true,
+      "contentHeight": 940,
+      "bodyOverflowHidden": true,
+      "clippedVertically": true,
+      "overflowing": [
+        "div.bg (1844px)",
+        "div.stat_block (1844px)",
+        "div.lvl_progress (1844px)",
+        "div.level_container (1844px)",
+        "div.level (1844px)",
+        "div.amount_level (1842px)",
+        "span.amount_lvl (1663px)",
+        "span.lvl (1697px)"
+      ],
+      "interactiveCount": 16,
+      "smallTargets": 2,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "a.telegram_url 58×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "The element or ID supplied is not valid. (videojs)"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js"
+      ],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 1,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        },
+        {
+          "id": "page-has-heading-one",
+          "impact": "moderate",
+          "nodes": 1,
+          "help": "Page should contain a level-one heading"
+        }
+      ]
+    }
+  },
+  "player": {
+    "360": {
+      "scrollWidth": 1837,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "section.right_player (1837px)",
+        "div.right_player_block (1837px)",
+        "div.settings_player_secondary (1837px)",
+        "div.players_selection (1555px)",
+        "h3.title_player_selection (1555px)",
+        "div.players_selection_block (1555px)",
+        "button.players.player_active (1554px)",
+        "div.settings_secondary (1837px)"
+      ],
+      "interactiveCount": 36,
+      "smallTargets": 17,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.custom-button 17×25",
+        "button.custom-button 15×23",
+        "button.custom-button 25×21",
+        "button.custom-button 17×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js",
+        "404 /source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8"
+      ],
+      "axe": null
+    },
+    "390": {
+      "scrollWidth": 1837,
+      "horizontalOverflow": true,
+      "contentHeight": 3120,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "section.right_player (1837px)",
+        "div.right_player_block (1837px)",
+        "div.settings_player_secondary (1837px)",
+        "div.settings_secondary (1837px)",
+        "h3.title_settings_secondary (1837px)",
+        "div.settings_secondary_block (1837px)",
+        "button.setting (1837px)",
+        "div.continue_viewing (1834px)"
+      ],
+      "interactiveCount": 36,
+      "smallTargets": 17,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.custom-button 17×25",
+        "button.custom-button 15×23",
+        "button.custom-button 25×21",
+        "button.custom-button 17×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js",
+        "404 /source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8"
+      ],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 8,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        }
+      ]
+    },
+    "768": {
+      "scrollWidth": 1837,
+      "horizontalOverflow": true,
+      "contentHeight": 900,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "section.left_player (1112px)",
+        "div.player_block (1112px)",
+        "div.player_box (1107px)",
+        "div.video-js.vjs-paused.my-video-dimensions.vjs-fluid.vjs-controls-disabled.vjs-workinghover.vjs-v8.vjs-user-active (1107px)",
+        "video.vjs-tech (1107px)",
+        "div.vjs-text-track-display (1107px)",
+        "div (1092px)",
+        "div.custom-controls (1107px)"
+      ],
+      "interactiveCount": 36,
+      "smallTargets": 17,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.custom-button 17×25",
+        "button.custom-button 15×23",
+        "button.custom-button 25×21",
+        "button.custom-button 17×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js",
+        "404 /source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8"
+      ],
+      "axe": null
+    },
+    "1024": {
+      "scrollWidth": 1837,
+      "horizontalOverflow": true,
+      "contentHeight": 900,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "section.left_player (1112px)",
+        "div.player_block (1112px)",
+        "div.player_box (1107px)",
+        "div.video-js.vjs-paused.my-video-dimensions.vjs-fluid.vjs-controls-disabled.vjs-workinghover.vjs-v8.vjs-user-active.vjs-error (1107px)",
+        "video.vjs-tech (1107px)",
+        "div.vjs-text-track-display (1107px)",
+        "div (1092px)",
+        "div.vjs-error-display.vjs-modal-dialog (1107px)"
+      ],
+      "interactiveCount": 36,
+      "smallTargets": 17,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.custom-button 17×25",
+        "button.custom-button 15×23",
+        "button.custom-button 25×21",
+        "button.custom-button 17×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js",
+        "404 /source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8"
+      ],
+      "axe": null
+    },
+    "1440": {
+      "scrollWidth": 1837,
+      "horizontalOverflow": true,
+      "contentHeight": 900,
+      "bodyOverflowHidden": true,
+      "clippedVertically": false,
+      "overflowing": [
+        "section.right_player (1837px)",
+        "div.right_player_block (1837px)",
+        "div.settings_player_secondary (1837px)",
+        "div.players_selection (1555px)",
+        "h3.title_player_selection (1555px)",
+        "div.players_selection_block (1555px)",
+        "button.players.player_active (1554px)",
+        "div.settings_secondary (1837px)"
+      ],
+      "interactiveCount": 36,
+      "smallTargets": 17,
+      "smallTargetSamples": [
+        "button.reportbtn 40×40",
+        "button.custom-button 17×25",
+        "button.custom-button 15×23",
+        "button.custom-button 25×21",
+        "button.custom-button 17×22"
+      ],
+      "minFontPx": 10,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "VIDEOJS: ERROR: (CODE:2 MEDIA_ERR_NETWORK) HLS playlist request error at URL: source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8. i"
+      ],
+      "failed": [
+        "FAILED https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/2.12.2/videojs-http-streaming.min.js",
+        "404 /source/server/anime/kimetsu_no_yaiba/AmiDub/1/1080/output.m3u8"
+      ],
+      "axe": [
+        {
+          "id": "button-name",
+          "impact": "critical",
+          "nodes": 8,
+          "help": "Buttons must have discernible text"
+        },
+        {
+          "id": "link-name",
+          "impact": "serious",
+          "nodes": 6,
+          "help": "Links must have discernible text"
+        }
+      ]
+    }
+  }
+}

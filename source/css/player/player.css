@@ -1,641 +1,620 @@
-*{
-    margin: 0;
-    padding: 0;
+/* Плеер. Меню, сброс и футер — в common.css */
+
+body.app > main{
+    display: grid;
+    gap: 32px;
+    align-items: start;
 }
 
-a{
-    text-decoration: none;
-}
-
-body{
-    height: 100vh;
-    overflow: hidden;
-}
-
-input.middle:focus {
-    outline-width: 0;
-}
-
-/* Меню */
-
-aside{
-    position: fixed;
-}
-nav{
-    width: 120px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-.home{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #212121;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 11px;
-    margin-top: 33px;
-}
-.profile, .player, .rating, .catalog, .settings, .reportbtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 11px;
-}
-
-.hover_home{
-    display: none;
-    position: relative;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 10px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-    z-index: 10;
-
-}
-
-.menu_btn:hover .hover_home {
-    display: block;
-}
-
-.hover_home span{
-    width: 56px;
-    position: absolute;
-    z-index: 6;
-    top: -8px;
-    left: 37px;
-}
-.hover_home svg{
-    position: absolute;
-    z-index: 5;
-    top: -15px;
-    left: 14px;
-}
-
-.menu_btn .menu_btn_icon{
-    transition: .2s;
-}
-.menu_btn:hover{
-    background-color: #212121;
-    transition: .2s;
-}
-
-.menu_btn:hover .menu_btn_icon svg path{
-    fill: #fff;
-    transition: .2s;
-}
-
-
-.menu_btn {
-    position: relative;
-    z-index: 10;
-}
-
-.circles_report{
-    width: 40px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3px;
-    margin-bottom: 33px;
-}
-.circlre{
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
-    background-color: #212121;
-}
-
-
-/* Основа */
-
-main{
-    display: flex;
-    margin-left: 120px;
-    height: 100%;
-}
-
-.left_player{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+.left_player,
 .right_player{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    min-width: 0;
 }
 
-.right_player_block{
-    height: 94%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    margin-left: 17px;
-}
+/* ---------- Видео ---------- */
 
-.title_main{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 200%;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #171717;
-    margin-top: 14px;
-    margin-bottom: 9px;
-}
-
-.tag_main{
-    display: flex;
-    margin-bottom: 32px;
-}
-.tag{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 10px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #212121;
-    padding: 4px 10px;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    margin-right: 4px;
-}
-.title_progress h3{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    margin-bottom: 9px;
-}
-
-
-
-.container {
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 988px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 9px;
-}
-.progress-bar {
-    border: 1px solid #212121;
-    border-radius: 9px;
-    width: 937px;
-    height: 8px;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-}
-.progress {
-    border-radius: 9px;
-    background: #212121;
-    height: 8px;
-    width: 25%;
-    transition: width 0.5s;
-}
-
-input[type="range"] {
-    display: none;
-}
-
-
-.top_series_list{
-    width: 992px;
-    display: flex;
-    justify-content: space-between;
-}
-.top_series_list h3{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-}
-
-.search_series_block{
+.player_box{
     position: relative;
-    margin-bottom: 9px;
-}
-
-.search_series_block svg{
-    position: absolute;
-    top: 13px;
-    left: 13px;
-}
-
-.search_series_block input{
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 248px;
-    height: 40px;
-    padding-left: 43px;
-}
-
-.settings_player_secondary{
-    display: flex;
-    justify-content: space-between;
-    width: 708px;
-}
-
-
-.series {
-    width: 992px;
-    display: flex;
-    justify-content: space-between;
-}
-.episode_block {
-    width: 863px;
-    overflow: hidden;
-    display: flex;
-}
-.episode_container {
-    display: flex;
-    transition: transform 0.3s ease;
-}
-.episode_container .episode:last-child{
-    margin-right: -6px;
-}
-.prev_series, .next_series {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    width: 45px;
-    height: 45px;
-    background: #212121;
-    border: 2px solid #212121;
-}
-.episode {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #212121;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 45px;
-    height: 45px;
-    margin-right: 6px;
-    flex-shrink: 0;
-}
-.episode_active {
-    border-radius: 5px;
-    width: 45px;
-    height: 45px;
-    background: #212121;
-    color: #fff;
-}
-
-
-.voice_acting{
-    width: 196px;
-}
-.players_selection{
-    width: 175px;
-}
-.settings_secondary{
-    width: 227px;
-}
-.title_voice_acting, .title_player_selection, .title_settings_secondary{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #171717;
-}
-.voice_acting_block, .players_selection_block, .settings_secondary_block{
-    display: flex;
-    flex-direction: column;
-}
-.voice{
-    cursor: pointer;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 196px;
-    height: 32px;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #212121;
-    margin-bottom: 9px;
-}
-.players{
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 174px;
-    height: 32px;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #212121;
-    margin-bottom: 9px;
-}
-.setting{
-    cursor: pointer;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 227px;
-    height: 32px;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #212121;
-    margin-bottom: 9px;
-}
-.voice_active, .player_active, .setting_active{
-    cursor: pointer;
-    background: #212121;
-    border: 2px solid #212121;
-    color: #fff;
-}
-.title_continue_viewing{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #171717;
-}
-
-
-.continue_block{
-    display: flex;
-    margin-bottom: 4px;
-}
-.coutinue_inf_top_block{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 13px;
-}
-.coutinue_inf_top {
-    margin-left: 13px;
-}
-.coutinue_inf_top h4{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 19px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    margin-bottom: 14px;
-}
-.coutinue_progress_series{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-}
-.coutinue_button{
-    cursor: pointer;
-    border-radius: 5px;
-    width: 175px;
-    height: 32px;
-    background: #212121;
-    border: 1px solid #212121;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-}
-.container_bar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 13px;
-}
-.container_progress-bar {
-    border: 1px solid #212121;
-    border-radius: 9px;
-    width: 615px;
-    height: 8px;
-    background-color: #fff;
+    width: 100%;
     border-radius: 10px;
     overflow: hidden;
-}
-.container_progress{
-    border-radius: 9px;
-    background: #212121;
-    height: 8px;
-    width: 25%;
-    transition: width 0.5s;
+    background: #000;
 }
 
-#container_slider[type="range"] {
-    display: none;
-}
-
-.continue_blocks{
-    max-height: 530px;
-    overflow-y: auto;
-}
-
-footer p {
-    position: absolute;
-    bottom: 2px;
-    right: 15%;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-}
-
-/* Плеер */
-.video-js.vjs-fullscreen .custom-controls {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+.player_box .video-js{
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    background: #000;
 }
+
 .video-js .vjs-tech{
     border-radius: 10px;
 }
 
-.player_box {
-    border-radius: 10px;
-    width: 987px;
-    height: 555px;
-    position: relative;
-    display: inline-block;
+/* Свои контролы вместо стандартных Video.js */
+.video-js .vjs-control-bar,
+.video-js .vjs-big-play-button,
+.video-js .vjs-error-display,
+.video-js .vjs-modal-dialog,
+.video-js .vjs-text-track-display{
+    display: none !important;
 }
 
-.custom-controls {
+.player_box.is-loading::after{
+    content: "";
     position: absolute;
-    bottom: 0px;
-    left: 0;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    width: 98%;
-    background: linear-gradient(0deg, #212121 0%, rgba(33, 33, 33, 0) 100%);
-    transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
-}
-
-.custom-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-    margin-right: 10px;
-}
-.quality-menu {
-    position: absolute;
-    right: 33px;
-    bottom: 50px;
-    border-radius: 3px;
-    width: 53px;
-    height: 72px;
-    background: #fff;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #212121;
-    padding: 5px;
-    display: none;
-}
-
-.quality {
-    cursor: pointer;
-    transition: .5s;
-}
-
-.quality-active {
-    cursor: pointer;
-    margin-bottom: 1px;
-    border-radius: 2px;
-    width: 52px;
-    height: 24px;
-    background: #212121;
-    color: #fff;
-    transition: background 0.3s ease, color 0.3s ease;
-}
-
-/* Эффект при наведении */
-.quality:hover {
-    background: #444;
-    color: #f1f1f1;
-    border-radius: 2px;
-    transition: .5s;
-}
-.progress-container_player {
-    width: 794px;
-    flex-grow: 1;
-    height: 3px;
-    background: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    margin-right: 14px;
-}
-.progress-bar_player {
-    height: 100%;
-    background: #212121;
-    width: 0%;
-    transition: width 0.2s ease-in-out;
-}
-
-.volue_adj {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    position: relative;
-}
-
-.volume-slider {
-    position: absolute;
-    right: 15px;
-    bottom: 25px;
-    width: 4px;
-    height: 100px;
-    background: #fff;
-    cursor: pointer;
-    border-radius: 2px;
-    display: none;
-    justify-content: center;
-}
-
-/* Увеличенная область взаимодействия */
-.volume-hover-area {
-    position: absolute;
-    width: 30px;  /* Делаем область больше */
-    height: 120px; /* Чуть больше слайдера */
-    top: -10px;
-    left: -13px;
-    background: transparent;
-}
-
-/* Оставляем ползунок внутри */
-.volume-fill {
-    width: 100%;
-    background: #212121;
-    position: absolute;
-    bottom: 0;
-    border-radius: 2px;
-    transition: height 0.1s ease;
-}
-
-.volume-thumb {
-    width: 8px;
-    height: 8px;
-    background: #fff;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    border: 4px solid rgba(255, 255, 255, .3);
+    border-top-color: #fff;
     border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes spin{
+    to{ transform: rotate(360deg); }
+}
+
+.player_status{
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 8px 12px;
+    background: rgba(33, 33, 33, .85);
+    color: #fff;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    z-index: 3;
+}
+
+.custom-controls{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 24px 6px 4px;
+    background: linear-gradient(0deg, rgba(33, 33, 33, .95) 0%, rgba(33, 33, 33, 0) 100%);
+    transition: opacity .3s ease-in-out, visibility .3s;
+}
+
+.player_box.controls-hidden{
+    cursor: none;
+}
+
+.player_box.controls-hidden .custom-controls{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.custom-button{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap);
+    height: var(--tap);
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+}
+
+.custom-button[hidden]{
+    display: none;
+}
+
+.custom-button:focus-visible,
+.progress-container_player:focus-visible,
+.volume-slider:focus-visible{
+    outline-color: #fff;
+    outline-offset: -2px;
+}
+
+.progress-container_player{
+    flex: 1;
+    min-width: 60px;
+    height: var(--tap);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    touch-action: none;
+    margin: 0 6px;
+}
+
+.progress-container_player::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(255, 255, 255, .5);
+    border-radius: 4px;
+}
+
+.progress-bar_player{
+    position: relative;
+    height: 4px;
+    width: 0;
+    background: #fff;
+    border-radius: 4px;
+}
+
+.time_player{
+    flex-shrink: 0;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.volue_adj,
+.quality_wrap{
+    position: relative;
+}
+
+.volume-slider{
     position: absolute;
     left: 50%;
-    transform: translateX(-50%);
-    transition: bottom 0.1s ease;
+    bottom: calc(100% + 4px);
+    width: var(--tap);
+    height: 120px;
+    margin-left: calc(var(--tap) / -2);
+    cursor: pointer;
+    touch-action: none;
 }
 
-.video-js[tabindex="-1"] {
-    outline: none;
-    border-radius: 10px;
+.volume-slider[hidden]{
+    display: none;
 }
 
-.player_box:fullscreen video {
+.volume-slider::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    bottom: 10px;
+    width: 4px;
+    margin-left: -2px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+.volume-fill{
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    width: 4px;
+    margin-left: -2px;
+    max-height: calc(100% - 20px);
+    background: var(--ink-soft);
+    border-radius: 2px;
+}
+
+.volume-thumb{
+    position: absolute;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    margin: 0 0 4px -6px;
+    background: #fff;
+    border-radius: 50%;
+    max-height: calc(100% - 20px);
+}
+
+.quality-menu{
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 4px);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px;
+    background: #fff;
+    border-radius: var(--radius);
+}
+
+.quality-menu[hidden]{
+    display: none;
+}
+
+.quality{
+    min-width: 64px;
+    height: 36px;
+    border: none;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--ink);
+}
+
+.quality:hover{
+    background: #e6e6e6;
+}
+
+.quality-active,
+.quality-active:hover{
+    background: var(--ink);
+    color: #fff;
+}
+
+.player_box.is-fullscreen,
+.player_box.is-fullscreen .video-js{
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* или contain, если хотите сохранить пропорции */
+    border-radius: 0;
+    padding-top: 0;
+}
+
+/* ---------- Заголовок ---------- */
+
+.title_main{
+    font-weight: 600;
+    font-size: clamp(18px, 4.5vw, 24px);
+    line-height: 1.25;
+    text-transform: uppercase;
+    margin: 14px 0 4px;
+}
+
+.title_main a:hover{
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.now_playing{
+    font-weight: 500;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+}
+
+.tag_main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 28px;
+}
+
+.tag{
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: var(--border);
+    border-radius: var(--radius);
+}
+
+.title_progress,
+.top_series_list h2,
+.title_continue_viewing,
+.settings_player_secondary legend{
+    font-weight: 600;
+    font-size: clamp(20px, 4.5vw, 27px);
+    text-transform: uppercase;
+    margin-bottom: 9px;
+}
+
+/* ---------- Прогресс сезона ---------- */
+
+.container{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 28px;
+}
+
+.progress-bar{
+    flex: 1;
+    height: 10px;
+    border: 1px solid var(--ink);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress{
+    height: 100%;
+    width: 0;
+    background: var(--ink);
+    transition: width .5s;
+}
+
+.progress_text{
+    font-weight: 600;
+    font-size: 15px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ---------- Список серий ---------- */
+
+.top_series_list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 9px;
+}
+
+.top_series_list h2{
+    margin-bottom: 0;
+}
+
+.search_series_block{
+    position: relative;
+    flex: 1 1 200px;
+    max-width: 280px;
+}
+
+.search_series_block svg{
+    position: absolute;
+    top: 50%;
+    left: 13px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.search_series_block input{
+    width: 100%;
+    height: var(--tap);
+    border: var(--border);
+    border-radius: var(--radius);
+    padding-left: 43px;
+    font: 600 16px var(--font);
+    text-transform: uppercase;
+    -moz-appearance: textfield;
+}
+
+.search_series_block input::-webkit-inner-spin-button,
+.search_series_block input::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+}
+
+.series{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.episode_block{
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    padding: 4px 2px;
+}
+
+.episode_block::-webkit-scrollbar{
+    display: none;
+}
+
+.episode_container{
+    display: flex;
+    gap: 6px;
+}
+
+.episode_container li{
+    scroll-snap-align: start;
+}
+
+.prev_series,
+.next_series{
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--tap);
+    height: 48px;
+    border-radius: var(--radius);
+    background: var(--ink);
+    border: var(--border);
+    cursor: pointer;
+}
+
+.episode{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--ink);
+    border: var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    position: relative;
+}
+
+.episode_watched::after{
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.episode_found{
+    box-shadow: 0 0 0 3px var(--accent);
+}
+
+.episode_active{
+    background: var(--ink);
+    color: #fff;
+}
+
+/* ---------- Правая колонка ---------- */
+
+.settings_player_secondary{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.settings_player_secondary fieldset{
+    border: none;
+    min-width: 0;
+}
+
+.voice_acting_block,
+.players_selection_block,
+.settings_secondary_block{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.voice,
+.players,
+.setting{
+    width: 100%;
+    min-height: var(--tap);
+    border: var(--border);
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+}
+
+.players{
+    cursor: default;
+}
+
+.voice:hover,
+.setting:hover{
+    background: #eee;
+}
+
+.voice_active,
+.player_active,
+.setting_active,
+.voice_active:hover,
+.setting_active:hover{
+    background: var(--ink);
+    color: #fff;
+}
+
+.continue_blocks{
+    display: grid;
+    gap: 12px;
+}
+
+.continue_block{
+    display: flex;
+    gap: 13px;
+}
+
+.coutinue_img{
+    flex-shrink: 0;
+    width: 72px;
+    height: 102px;
+    border-radius: var(--radius);
+    object-fit: cover;
+}
+
+.coutinue_inf{
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 12px;
+    align-content: center;
+}
+
+.coutinue_inf h3{
+    grid-column: 1 / -1;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.coutinue_progress_series{
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    align-self: center;
+}
+
+.coutinue_button{
+    grid-row: 2 / 4;
+    grid-column: 2;
+    align-self: center;
+    min-height: var(--tap);
+    padding: 0 16px;
+    border-radius: var(--radius);
+    background: var(--ink);
+    border: var(--border);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+}
+
+.coutinue_button:hover{
+    background: #fff;
+    color: var(--ink);
+}
+
+.container_progress-bar{
+    height: 8px;
+    border: 1px solid var(--ink);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.container_progress{
+    height: 100%;
+    background: var(--ink);
+}
+
+@media (max-width: 479px){
+    .time_player,
+    #pipBtn{
+        display: none;
+    }
+    .coutinue_inf{
+        grid-template-columns: 1fr;
+    }
+    .coutinue_button{
+        grid-row: auto;
+        grid-column: 1;
+        justify-self: start;
+    }
+}
+
+@media (min-width: 1200px){
+    body.app > main{
+        grid-template-columns: minmax(0, 1.4fr) minmax(360px, 1fr);
+    }
+    .continue_blocks{
+        max-height: 560px;
+        overflow-y: auto;
+        padding-right: 6px;
+    }
 }

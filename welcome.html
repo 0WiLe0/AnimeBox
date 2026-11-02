@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeBox</title>
+    <title>AnimeBox — смотри аниме онлайн</title>
+    <meta name="description" content="AnimeBox — сервис для просмотра аниме онлайн. Бета-версия.">
+    <link rel="icon" href="source/img/favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
@@ -15,15 +17,15 @@
 
         <section class="welcome">
 
-            <div class="logo">
-                <img src="source/img/welcome/logo_main.png" alt="">
-            </div>
+            <h1 class="logo">
+                <img src="source/img/welcome/logo_main.png" alt="AnimeBox beta">
+            </h1>
 
-            <a class="start" href="auth.html">Начать просмотр</a>
+            <a class="start" href="login.html">Начать просмотр</a>
 
             <span class="label">Смотри и наслаждайся!</span>
 
-            <div class="main_circles">
+            <div class="main_circles" aria-hidden="true">
                 <div class="circles"></div>
                 <div class="circles"></div>
                 <div class="circles"></div>
@@ -31,7 +33,7 @@
 
         </section>
 
-        <section class="hero">
+        <section class="hero" aria-hidden="true">
             <div class="hero_one">
                 <img src="source/img/welcome/hero1.png" alt="">
             </div>
@@ -43,7 +45,7 @@
 
     </main>
 
-    <section class="version">Beta version 0.0.1</section>
+    <footer class="version">Beta version 0.1.0</footer>
 
 </body>
 </html>

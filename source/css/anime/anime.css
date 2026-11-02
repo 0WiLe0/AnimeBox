@@ -1,354 +1,196 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-a{
-    text-decoration: none;
-}
-
-li{
-    list-style: none;
-}
-
-body{
-    height: 100vh;
-    overflow: hidden;
-}
-
-input.middle:focus {
-    outline-width: 0;
-}
-
-/* Меню */
-
-aside{
-    position: fixed;
-}
-nav{
-    width: 120px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-.home{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #212121;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 11px;
-    margin-top: 33px;
-}
-.profile, .player, .rating, .catalog, .settings, .reportbtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 11px;
-}
-
-.hover_home{
-    display: none;
-    position: relative;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 10px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-    z-index: 100000;
-
-}
-
-.menu_btn:hover .hover_home {
-    display: block;
-}
-
-.hover_home span{
-    width: 56px;
-    position: absolute;
-    z-index: 6;
-    top: -8px;
-    left: 37px;
-}
-.hover_home svg{
-    position: absolute;
-    z-index: 5;
-    top: -15px;
-    left: 14px;
-}
-
-.menu_btn .menu_btn_icon{
-    transition: .2s;
-}
-.menu_btn:hover{
-    background-color: #212121;
-    transition: .2s;
-}
-
-.menu_btn:hover .menu_btn_icon svg path{
-    fill: #fff;
-    transition: .2s;
-}
-
-
-.menu_btn {
-    position: relative;
-    z-index: 10;
-}
-
-.circles_report{
-    width: 40px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3px;
-    margin-bottom: 33px;
-}
-.circlre{
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
-    background-color: #212121;
-}
-
-
-/* Основа */
-
-main{
-    display: flex;
-    flex-direction: column;
-    margin-left: 120px;
-    height: 100%;
-}
-
-
-.header{
-    margin-top: 33px;
-}
-.header_bg{
-    position: relative;
-}
-.bg{
-    background-position: center;
-    border-radius: 5px;
-    width: 1724px;
-    height: 255px;
-}
-.avatar{
-    position: absolute;
-    top: 167px;
-    left: 94px;
-    border: 5px solid #fff;
-    border-radius: 131px;
-    width: 175px;
-    height: 168px;
-}
-.inf_profile{
-    position: absolute;
-    top: 205px;
-    left: 296px;
-    display: flex;
-    align-items: end;
-}
-.nickname{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 29px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #fff;
-    margin-right: 10px;
-}
-.status_block{
-    display: flex;
-
-}
-.status_name{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #fff;
-    margin-bottom: 5px;
-}
-.status_circle{
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #A8EFA8;
-    margin-left: 5px;
-}
-
-.rating-block {
-    font-family: 'Arial', sans-serif;
-    color: #222;
-    max-width: 400px;
-}
-.anime_information-blocks{
-    display: flex;
-}
+/* Страница тайтла. Меню, сброс и футер — в common.css */
 
 .header-block{
-    width: 1731px;
-    height: 253px;
-    border-radius: 5px;
+    width: 100%;
+    aspect-ratio: 1757 / 300;
+    min-height: 120px;
+    border-radius: var(--radius);
+    background: url("../../img/anime/header_bg.png") center / cover no-repeat;
     box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.25);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-top: 33px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .anime_information-block{
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(110px, 160px) 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
 }
 
 .anime_image{
-    width: 219px;
-    height: 308px;
-    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.25);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 5px;
-}
-.anime_information{
-    margin-left: 23px;
+    grid-row: span 2;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 219 / 308;
+    object-fit: cover;
+    border-radius: var(--radius);
 }
 
 .title_anime{
-    font-family: Oswald, sans-serif;
     font-weight: 600;
-    font-size: 33px;
+    font-size: clamp(20px, 5vw, 33px);
+    line-height: 1.15;
     text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    margin-bottom: 13px;
+    margin-bottom: 12px;
 }
 
 .tags{
     display: flex;
-    margin-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
 }
 
 .tag{
-    font-family: Oswald, sans-serif;
     font-weight: 600;
     font-size: 12px;
     text-transform: uppercase;
-    text-align: center;
-    color: #212121;
-    padding: 5px 16px;
-    border: 2px solid #212121;
-    margin-right: 6px;
-    border-radius: 5px;
+    padding: 4px 12px;
+    border: var(--border);
+    border-radius: var(--radius);
 }
 
 .info_list{
-    text-decoration: none;
-    list-style: none;
-    display: flex;
-}
-
-.info_list>ul>li{
-    font-family: Oswald, sans-serif;
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 32px;
     font-weight: 600;
     font-size: 15px;
     text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
+    margin-bottom: 20px;
+}
+
+.info_list dd{
+    color: var(--ink-soft);
+}
+
+.anime_information{
+    display: contents;
+}
+
+.anime_information > h1,
+.anime_information > .tags{
+    grid-column: 2;
+}
+
+.watch_btn{
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 52px;
+    font-size: 17px;
+}
+
+.descr-block,
+.viewing_timeline-block,
+.user_rating_anime-block{
+    margin-bottom: 32px;
+}
+
+.title_descr,
+.title_viewing_timeline,
+.title_user_rating_anime{
+    font-weight: 600;
+    font-size: clamp(22px, 5vw, 27px);
+    text-transform: uppercase;
     margin-bottom: 10px;
 }
-.li_value{
-    margin-left: 51px;
-}
 
-.descr-block{
-    margin-bottom: 36px;
-}
-.title_descr{
-    font-family: Oswald, sans-serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    margin-bottom: 9px;
-}
 .descr_anime{
-    width: 1067px;
-    font-family: Oswald, sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
+    max-width: 75ch;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-.viewing_timeline-block{
+.buttons_viewing_timeline{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
 
-}
-.title_viewing_timeline{
-    font-family: Oswald, sans-serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-}
 .button_viewing_timeline{
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 149px;
-    height: 32px;
-    background: #fff;
-    font-family: Oswald, sans-serif;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #212121;
+    font-size: 13px;
 }
 
-.title_user_rating_anime{
-    font-family: Oswald, sans-serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-}
 .stars-block{
-    display: flex;
-    align-items: center;
+    border: none;
 }
+
 .stars{
     display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-bottom: 8px;
 }
+
+.star{
+    width: var(--tap);
+    height: var(--tap);
+    cursor: pointer;
+    background: url("../../img/anime/star_clear.svg") center / 26px no-repeat;
+    border-radius: var(--radius);
+}
+
+.stars input:focus-visible + .star{
+    outline: 3px solid var(--ink);
+    outline-offset: 1px;
+}
+
 .rating-result{
-    display: flex;
-    align-items: center;
-    font-family: Oswald, sans-serif;
     font-weight: 600;
     font-size: 16px;
     text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
 }
-#rating-value{
-    margin-left: 7px;
+.stars:has(#star1:checked) .star:nth-of-type(-n+1),
+.stars:has(#star2:checked) .star:nth-of-type(-n+2),
+.stars:has(#star3:checked) .star:nth-of-type(-n+3),
+.stars:has(#star4:checked) .star:nth-of-type(-n+4),
+.stars:has(#star5:checked) .star:nth-of-type(-n+5),
+.stars:has(#star6:checked) .star:nth-of-type(-n+6),
+.stars:has(#star7:checked) .star:nth-of-type(-n+7),
+.stars:has(#star8:checked) .star:nth-of-type(-n+8),
+.stars:has(#star9:checked) .star:nth-of-type(-n+9),
+.stars:has(#star10:checked) .star:nth-of-type(-n+10){
+    background-image: url("../../img/anime/star_full.svg");
 }
-.rating-result img{
-    margin: 0 3px;
+
+@media (hover: hover){
+    .stars:has(.star:nth-of-type(1):hover) .star:nth-of-type(-n+1),
+    .stars:has(.star:nth-of-type(2):hover) .star:nth-of-type(-n+2),
+    .stars:has(.star:nth-of-type(3):hover) .star:nth-of-type(-n+3),
+    .stars:has(.star:nth-of-type(4):hover) .star:nth-of-type(-n+4),
+    .stars:has(.star:nth-of-type(5):hover) .star:nth-of-type(-n+5),
+    .stars:has(.star:nth-of-type(6):hover) .star:nth-of-type(-n+6),
+    .stars:has(.star:nth-of-type(7):hover) .star:nth-of-type(-n+7),
+    .stars:has(.star:nth-of-type(8):hover) .star:nth-of-type(-n+8),
+    .stars:has(.star:nth-of-type(9):hover) .star:nth-of-type(-n+9),
+    .stars:has(.star:nth-of-type(10):hover) .star:nth-of-type(-n+10){
+        background-image: url("../../img/anime/star_full.svg");
+        opacity: .8;
+    }
+}
+
+@media (min-width: 768px){
+    .anime_information-block{
+        grid-template-columns: 219px 1fr;
+        gap: 23px;
+    }
+    .anime_information{
+        display: block;
+    }
+    .info_list{
+        width: fit-content;
+    }
+    .watch_btn{
+        width: auto;
+        min-width: 280px;
+    }
+    .buttons_viewing_timeline{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .button_viewing_timeline{
+        width: 149px;
+    }
 }

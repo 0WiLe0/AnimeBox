@@ -1,291 +1,163 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+/* Главная. Меню, сброс и футер — в common.css */
 
-a{
-    text-decoration: none;
-}
+/* Промо-блок с видео */
 
-body{
-    height: 100vh;
-    overflow: hidden;
-}
-
-input.middle:focus {
-    outline-width: 0;
-}
-
-/* Меню */
-
-aside{
-    position: fixed;
-}
-nav{
-    width: 120px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-.home{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #212121;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 11px;
-    margin-top: 33px;
-}
-.profile, .player, .rating, .catalog, .settings, .reportbtn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 11px;
-}
-
-.hover_home{
-    display: none;
-    position: relative;
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 10px;
-    text-transform: uppercase;
-    text-align: center;
-    color: #fff;
-    z-index: 100000;
-
-}
-
-.menu_btn:hover .hover_home {
-    display: block;
-}
-
-.hover_home span{
-    width: 56px;
-    position: absolute;
-    z-index: 6;
-    top: -8px;
-    left: 37px;
-}
-.hover_home svg{
-    position: absolute;
-    z-index: 5;
-    top: -15px;
-    left: 14px;
-}
-
-.menu_btn .menu_btn_icon{
-    transition: .2s;
-}
-.menu_btn:hover{
-    background-color: #212121;
-    transition: .2s;
-}
-
-.menu_btn:hover .menu_btn_icon svg path{
-    fill: #fff;
-    transition: .2s;
-}
-
-
-.menu_btn {
-    position: relative;
-    z-index: 10;
-}
-
-.circles_report{
-    width: 40px;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3px;
-    margin-bottom: 33px;
-}
-.circlre{
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
-    background-color: #212121;
-}
-
-
-/* Основа */
-
-main{
-    display: flex;
-    flex-direction: column;
-    margin-left: 120px;
-    height: 100%;
-}
-
-.video_block {
+.video_block{
     position: relative;
     width: 100%;
-    max-width: 1719px; /* Максимальная ширина контейнера */
-    margin: 0 auto;
-    margin-top: 33px;
-    z-index: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--ink);
+    isolation: isolate;
 }
 
-.video_container {
+.video_container{
     position: relative;
     z-index: -1;
     width: 100%;
-    padding-top: 31.15%; /* Соотношение высоты к ширине (600 / 1757 * 100%) */
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.55);
+    aspect-ratio: 4 / 5;
 }
 
-.video_container video {
+.video_container video{
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
     filter: brightness(40%);
-    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.55);
-    object-fit: cover; /* Сохраняет пропорции и заполняет контейнер */
-}
-.video_inf {
-    position: absolute;
-    bottom:0;
-    right: 0;
-    margin-right: 26px;
 }
 
-.video_inf h2{
-    font-family: "Oswald", serif;
+.video_container::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 -68px 36px 0 rgba(0, 0, 0, 0.55);
+}
+
+.video_inf{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+}
+
+.video_inf h1{
     font-weight: 600;
-    font-size: 29px;
+    font-size: clamp(24px, 6vw, 29px);
+    line-height: 1.15;
     text-transform: uppercase;
-    text-align: justify;
     color: #fff;
+    margin-bottom: 12px;
+}
+
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
     margin-bottom: 16px;
 }
 
-.tags {
+.tag{
     display: flex;
-    margin-bottom: 17px;
-}
-
-.tag {
-    display: flex;
-    justify-content: center;
     align-items: center;
-    font-family: "Oswald", serif;
     font-weight: 600;
-    font-size: 10px;
+    font-size: 12px;
     text-transform: uppercase;
-    text-align: center;
     color: #fff;
     border: 2px solid #fff;
-    border-radius: 5px;
-    min-width: 66px;
-    height: 10px;
-    padding: 5px;
-    margin-right: 3px;
+    border-radius: var(--radius);
+    padding: 3px 10px;
 }
 
-.video_btn {
-    cursor: pointer;
+.video_btn{
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 5px;
-    width: 426px;
-    height: 51px;
+    gap: 6px;
+    width: 100%;
+    height: 52px;
+    border-radius: var(--radius);
     background: #fff;
-    font-family: "Oswald", serif;
-    font-size: 15px;
-    border:none;
+    border: 2px solid #fff;
+    font-size: 16px;
+    font-weight: 500;
     text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    margin-bottom: 28px;
+    color: var(--ink);
     transition: .2s;
 }
 
 .video_btn:hover{
-    background: #212121;
+    background: var(--ink);
     color: #fff;
-    margin-bottom: 28px;
-    transition: .2s;
 }
 
 .video_btn:hover svg path{
     fill: #fff;
-    transition: .2s;
 }
 
-.video_btn span{
-    margin-right: 6px;
+.video_btn:focus-visible{
+    outline-color: #fff;
 }
+
+/* О бета-версии */
 
 .beta_block{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 1719px;
-    height: 100%;
+    display: grid;
+    gap: 40px;
+    justify-items: center;
+    padding: 40px 0 16px;
+}
+
+.logo_beta img{
+    width: min(320px, 80vw);
+    height: auto;
 }
 
 .beta_inf{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 578px;
-    margin-right: 131px;
+    max-width: 578px;
+    width: 100%;
 }
-.beta_inf h3{
-    font-family: "Oswald", serif;
+
+.beta_inf h2,
+.beta_stats h2{
     font-weight: 600;
-    font-size: 27px;
+    font-size: clamp(22px, 5vw, 27px);
     text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    margin-bottom: 23px;
+    text-align: center;
+    color: var(--ink);
+    margin-bottom: 16px;
 }
+
 .beta_inf p{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 13px;
-    text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    margin-bottom: 28px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 24px;
 }
+
 .beta_inf a{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: "Oswald", serif;
     font-weight: 600;
     font-size: 20px;
     text-transform: uppercase;
-    text-align: justify;
-    color: #212121;
-    border: 2px solid #212121;
-    border-radius: 5px;
-    width: 578px;
-    height: 65px;
+    color: var(--ink);
+    border: var(--border);
+    border-radius: var(--radius);
+    width: 100%;
+    height: 60px;
     background: #fff;
-    transition: .5s;
+    transition: .3s;
 }
 
 .beta_inf a:hover{
     color: #fff;
-    border: 2px solid #212121;
-    background-color: #212121;
-    transition: .5s;
+    background: var(--ink);
 }
 
 .beta_stats{
@@ -294,26 +166,42 @@ main{
     align-items: center;
 }
 
-.beta_stats h3{
-    font-family: "Oswald", serif;
-    font-weight: 600;
-    font-size: 27px;
-    text-transform: uppercase;
-    color: #212121;
+.beta_stats h2{
+    margin-bottom: 0;
 }
 
 .beta_stats span{
-    font-family: "Oswald", serif;
     font-weight: 600;
     font-size: 22px;
     text-transform: uppercase;
-    color: #212121;
 }
 
 .count_user{
-    font-family: "Oswald", serif;
     font-weight: 600;
-    font-size: 120px;
-    text-transform: uppercase;
-    color: #212121;
+    font-size: clamp(80px, 18vw, 120px);
+    line-height: 1.1;
+}
+
+@media (min-width: 600px){
+    .video_container{
+        aspect-ratio: 16 / 9;
+    }
+    .video_inf{
+        left: auto;
+        right: 26px;
+        bottom: 26px;
+        width: min(426px, calc(100% - 52px));
+    }
+}
+
+@media (min-width: 1024px){
+    .video_container{
+        aspect-ratio: 1757 / 600;
+    }
+    .beta_block{
+        grid-template-columns: 1fr 1.4fr 1fr;
+        align-items: center;
+        gap: 32px;
+        padding-top: 56px;
+    }
 }
